@@ -1,4 +1,5 @@
 #summary google-mysql-tools overview
+#labels Featured
 
 = Introduction =
 
@@ -10,7 +11,6 @@ This project includes:
    * mypgrep.py - a tool, similar to pgrep, for managing mysql connections
    * compact_innodb.py - compacts innodb datafiles by dumping and reloading all tables
    * patches - patches to add features to MySQL 4.0.26
-
 
 
 
