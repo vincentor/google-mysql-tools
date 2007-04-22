@@ -22,7 +22,7 @@ The patches include a few big features and many enhancements. The big features a
   * TransactionalReplication - make InnoDB and slave replication state consistent during crash recovery
   * UserTableMonitoring - monitor and report database activity per account and table
   * InnodbAsyncIo - support multiple background IO threads for InnoDB
-  * FastMasterPromotion
+  * FastMasterPromotion - promote a slave to a master without restart
 
 Other enhancements include:
   * LosslessFloatDump - support dump and restore of float/double without loss of precision
