@@ -1,0 +1,13 @@
+#summary Transactional Replication
+
+= Introduction =
+
+Replication state on the slave is stored in two files: relay-log.info and master.info. The slave SQL thread commits transactions to a storage engine and then updates these files to indicate the next event from the relay log to be executed. When the slave mysqld process is stopped between the commit and the file update, replication state is inconsistent and the slave SQL thread will duplicate the last transaction when the slave mysqld process is restarted.
+
+= Details =
+
+This feature prevents that for the InnoDB storage engine by storing replication state in the InnoDB transaction log. On restart, this state is used to make the replication state files consistent with InnoDB.
+
+The feature is enabled by the configuration parameter *rpl_transaction_enabled=1*. Normally, this is added to the *[mysqld]* section in */etc/my.cnf*.
+
+TODO -- describe reset slave [no purge binlog]
