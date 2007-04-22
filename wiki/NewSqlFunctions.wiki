@@ -1,0 +1,39 @@
+#summary New SQL Functions
+
+= Notes =
+
+New SQL functions have been added:
+  * IEEE754_TO_STRING
+  * UNORDERED_CHECKSUM
+  * ORDERED_CHECKSUM
+  * HASH
+
+= IEEE754_TO_STRING =
+
+Converts a float or double decimal value with type string. This generates 17 digits of precision so that conversion of the string back to a double does not lose precision (the original double should be equal to the final double for all but a few special cases.
+
+= UNORDERED_CHECKSUM =
+
+This is a SQL aggregate function that accepts one or more arguments. It returns the hash of its input arguments per group. The function is order independent. The result from each row in a group is combined by XOR.
+
+{{{
+select hash(c1) from foo group by c2;
+select hash(c1, c2) from foo group by c3;
+}}}
+
+= ORDERED_CHECKSUM =
+
+This is a SQL aggregate function that accepts one or more arguments. It returns the hash of its input arguments per group. The function is order dependent. The output of this from the first row in a group is used as the seed for the hash on the next row.
+
+{{{
+select hash(c1) from foo group by c2;
+select hash(c1, c2) from foo group by c3;
+}}}
+
+= HASH =
+
+This is a SQL function. It returns the hash of its input argument. It is not an aggregate function and produces one value per row.
+
+{{{
+select hash(column) from foo
+}}}
