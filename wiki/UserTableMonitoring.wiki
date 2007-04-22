@@ -1,0 +1,36 @@
+#summary Activity monitoring per table, account and index
+
+= Introduction =
+
+We have added code to measure database activity and aggregate the results per account, table and index. We have also added SQL statements to display these values.
+
+= Details =
+
+Note that *rows changed* includes rows from insert, update, delete and replace statements.
+
+The commands are:
+  * *SHOW USER_STATISTICS*
+  * *SHOW TABLE_STATISTICS*
+  * *SHOW INDEX_STATISTICS*
+
+= SHOW USER_STATISTICS =
+
+This displays:
+  * number of seconds this account has executed SQL commands
+  * number of concurrent connections
+  * number of connections created
+  * number of rollbacks
+  * number of commits
+  * number of select statements
+  * number of row change statements
+  * number of other statements and internal commands
+  * number of rows fetched
+  * number of rows changed
+
+= SHOW TABLE_STATISTICS =
+
+This displays the number of rows fetched and changed per table. It also displays the number of rows changed multiplied by the number of indexes on the table.
+
+= SHOW INDEX_STATISTICS =
+
+This displays the number of rows fetched per index. It can be used to find unused indexes.
