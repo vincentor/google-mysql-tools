@@ -10,4 +10,13 @@ This feature prevents that for the InnoDB storage engine by storing replication 
 
 The feature is enabled by the configuration parameter *rpl_transaction_enabled=1*. Normally, this is added to the *[mysqld]* section in */etc/my.cnf*.
 
+The state stored in the InnoDB transaction log can be cleared setting a parameter and then committing a transaction in InnoDB. For example:
+{{{
+set session innodb_clear_replication_status=1;
+create table foo(i int) type=InnoDB;
+insert into foo values (1);
+commit;
+drop table foo;
+}}}
+
 TODO -- describe reset slave [no purge binlog]
