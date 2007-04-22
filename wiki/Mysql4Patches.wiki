@@ -40,3 +40,4 @@ Other enhancements include:
   * MoreLogging - log actions done on specified tables and *SUPER* users
   * *rpl_always_enter_innodb* boosts the priority of the slave SQL thread (for replication) in InnoDB by making it ignore the InnoDB concurrency limits
   * *rpl_event_buffer_size* sets the fixed size buffer that is allocated in the master for each connected slave.  The buffer is used for replication events smaller than the buffer. This reduces memory allocation done to copy replication events from the master.
+  * Backported *sync-binlog*
