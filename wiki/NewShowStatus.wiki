@@ -1,0 +1,40 @@
+#summary New varlues in *SHOW STATUS*
+
+= Notes =
+
+The new values include:
+  * Binlog_events - number of replication events written to the binlog
+  * Binlog_largest_event - larget event in the current binlog
+  * Denied_connections - number of connection attempts that fail because of the max_connections limit
+  * Malloc_sbrk_bytes_alloc, Malloc_chunks_free, Malloc_mmap_chunks_alloc, Malloc_mmap_bytes_alloc, Malloc_bytes_used, Malloc_bytes_free - values reported from mallinfo()
+  * Vm_size, Vm_data, Vm_rss - data extracted from /proc for the mysqld process
+
+Values for replication:
+  * Replication_fail_io_connections
+  * Replication_last_event_buffered
+  * Replication_last_event_diff
+  * Replication_last_event_done
+  * Replication_max_delay
+  * Replication_slowest_event
+  * Replication_slowest_event
+  * Rpl_mirror_binlog_clients
+  * Rpl_mirror_binlog_status
+
+Values for semi-synchronous replication:
+  * Rpl_semi_sync_clients
+  * Rpl_semi_sync_net_avg_wait_time(us)
+  * Rpl_semi_sync_net_wait_time
+  * Rpl_semi_sync_net_waits
+  * Rpl_semi_sync_no_times  
+  * Rpl_semi_sync_no_tx
+  * Rpl_semi_sync_status
+  * Rpl_semi_sync_slave_status
+  * Rpl_semi_sync_timefunc_failures
+  * Rpl_semi_sync_tx_avg_wait_time(us)
+  * Rpl_semi_sync_tx_wait_time
+  * Rpl_semi_sync_tx_waits
+  * Rpl_semi_sync_wait_pos_backtraverse
+  * Rpl_semi_sync_wait_sessions
+  * Rpl_semi_sync_yes_tx
+  * Rpl_transaction_support
+
