@@ -15,4 +15,6 @@ Parameters:
 
 = Super User Log =
 
-This logs all DDL and DML (create, drop, insert, update, delete and replace statements) done by users with the SUPER privilege. DML statements are only logged when they modify at least 1 row after statement completion. A statement that changes 1 row but is never committed, still writes data to the log.
+*log-update* logs all DDL and DML (create, drop, insert, update, delete and replace statements) done by users with the SUPER privilege. DML statements are only logged when they modify at least 1 row after statement completion. A statement that changes 1 row but is never committed, still writes data to the log.
+
+This paramter is not new. This patch changes the meaning of the parameter.
