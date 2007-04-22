@@ -1,0 +1,32 @@
+#summary Patches for MySQL 4.0
+#labels Featured
+
+= Introduction =
+
+These are patches for MySQL 4.0.26. They add many features that enhance the manageability and reliability of MySQL. 
+
+In a perfect world, each feature would be provided as a separate patch and all code would be as portable as MySQL. We are not there yet. These have been implemented and deployed on Linux. Also, some of these features only work with InnoDB, because we use InnoDB. They could be extended to support other storage engines.
+
+The patch should be applied to MySQL 4.0.26 source code. That source is available from the download section for this project. The patch can be applied to the source as:
+{{{
+  tar xf mysql-4.0.26.tar.gz
+  cd mysql-4.0.26
+  patch --strip=1 --fuzz=1 < ../mysql-4.0.26-patches
+}}}
+
+= Features =
+
+The patches include a few big features and many enhancements. The big features are:
+  * SemiSyncReplication - block commit on a master until at least one slave acknowledges receipt of all replication events.
+  * MirroredBinlogs - maintain a copy of the master's binlog on a slave
+  * TransactionalReplication - make InnoDB and slave replication state consistent during crash recovery
+  * UserTableMonitoring - monitor and report database activity per account and table
+  * InnodbAsyncIO - support multiple background IO threads for InnoDB
+
+Other enhancements include:
+  * LosslessFloatDump - support dump and restore of float/double without loss of precision
+  * Use 8X less memory for account and table privileges
+  * Use fastest compression rather than the default level for client/mysqld networking 
+
+
+
