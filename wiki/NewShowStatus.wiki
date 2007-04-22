@@ -10,31 +10,26 @@ The new values include:
   * Vm_size, Vm_data, Vm_rss - data extracted from /proc for the mysqld process
 
 Values for replication:
-  * Replication_fail_io_connections
-  * Replication_last_event_buffered
-  * Replication_last_event_diff
-  * Replication_last_event_done
-  * Replication_max_delay
-  * Replication_slowest_event
-  * Replication_slowest_event
-  * Rpl_mirror_binlog_clients
-  * Rpl_mirror_binlog_status
+  * Replication_fail_io_connections - on a slave, number of times the IO thread has disconnected from the master because of an error
+  * Replication_last_event_buffered - on a slave, time when last replication event received
+  * Replication_last_event_done - on a slave, time when last replication event replayed
+  * Rpl_mirror_binlog_clients - number of slaves connected to a slave serving from a mirror binlog
+  * Rpl_mirror_binlog_status - indicates the health of the mirror binlog
 
 Values for semi-synchronous replication:
-  * Rpl_semi_sync_clients
-  * Rpl_semi_sync_net_avg_wait_time(us)
-  * Rpl_semi_sync_net_wait_time
+  * Rpl_semi_sync_clients - number of semi-sync clients connected to a master
+  * Rpl_semi_sync_net_avg_wait_time(us) - average time to wait for an acknowledgement of a replication event from a semi-sync slave
+  * Rpl_semi_sync_net_wait_time - total time waiting for acknowledgement
   * Rpl_semi_sync_net_waits
   * Rpl_semi_sync_no_times  
-  * Rpl_semi_sync_no_tx
-  * Rpl_semi_sync_status
-  * Rpl_semi_sync_slave_status
+  * Rpl_semi_sync_no_tx - number of transactions not acknowledged by semi-sync slaves
+  * Rpl_semi_sync_status - indicates whether semi-sync is enabled
+  * Rpl_semi_sync_slave_status 
   * Rpl_semi_sync_timefunc_failures
-  * Rpl_semi_sync_tx_avg_wait_time(us)
+  * Rpl_semi_sync_tx_avg_wait_time(us) - average time a sessions waits for commit to finish
   * Rpl_semi_sync_tx_wait_time
   * Rpl_semi_sync_tx_waits
   * Rpl_semi_sync_wait_pos_backtraverse
   * Rpl_semi_sync_wait_sessions
-  * Rpl_semi_sync_yes_tx
+  * Rpl_semi_sync_yes_tx - number of transactions acknowledged by semi-sync slaves
   * Rpl_transaction_support
-
