@@ -32,4 +32,4 @@ Other enhancements include:
   * InnodbStatus - display more statistics in *show innodb status*
   * Reduced number of calls to fsync when the InnoDB background IO thread is active
   * Changed InnoDB to recover when InnoDB and MySQL data dictionaries are inconsistent
-
+  * NewSqlFunctions - functions for checksums and floating point to string conversion
