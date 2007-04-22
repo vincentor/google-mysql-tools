@@ -10,4 +10,9 @@ When hierarchical replication is used, that state cannot be transferred without 
 
 We have modified the slave IO thread to maintain a copy of the master's binlog as it writes the relay log. By *copy*, I mean that the file has the same name and same contents. When this is done, slave can transparently failover between replication proxy slaves as long as the proxies all mirror the binlog.
 
-This is enabled by the parameter *rpl_mirror_binlog_enabled*. Another parameter, *rpl_mirror_binlog_no_replicate*, enables mirroring of the binlog on a slave but prevents the slave from serving it to other slaves.
+When this is first enabled, the slave must download all of the current binlog. This can take some time. New events are not appended to the relay log until this has finished.
+
+Parameters:
+  * *rpl_mirror_binlog_enabled* enables this
+  * *rpl_mirror_binlog_no_replicate*, enables mirroring of the binlog on a slave but prevents the slave from serving it to other slaves.
+  * *sync-mirror-binlog* is equivalent to *sync-binlog* but for the mirror binlog
