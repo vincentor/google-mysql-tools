@@ -35,9 +35,11 @@ Other enhancements include:
   * NewSqlFunctions - functions for checksums and floating point to string conversion
   * Backported *START SLAVE UNTIL*
   * Sort float columns with the order: *-INF < negative < 0 < positive < +INF < NaN*
-  * Change *long_query_time* to be dynamic and log all queries when it is 0
+  * Change *long_query_time* to be dynamic and log all queries that run for greater than or equal this number of seconds rather than greater than.
   * Count connection attempts tha are denied because of *max_connections* and display the count as *denied_connections*
   * MoreLogging - log actions done on specified tables and *SUPER* users
   * *rpl_always_enter_innodb* boosts the priority of the slave SQL thread (for replication) in InnoDB by making it ignore the InnoDB concurrency limits
   * *rpl_event_buffer_size* sets the fixed size buffer that is allocated in the master for each connected slave.  The buffer is used for replication events smaller than the buffer. This reduces memory allocation done to copy replication events from the master.
   * Backported *sync-binlog*
+  * Added *reserved_super_connections* to reserve the final N connections for users with the SUPER privilege
+  * NewShowStatus - many new variables in *SHOW STATUS*
