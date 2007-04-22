@@ -21,12 +21,13 @@ The patches include a few big features and many enhancements. The big features a
   * MirroredBinlogs - maintain a copy of the master's binlog on a slave
   * TransactionalReplication - make InnoDB and slave replication state consistent during crash recovery
   * UserTableMonitoring - monitor and report database activity per account and table
-  * InnodbAsyncIO - support multiple background IO threads for InnoDB
+  * InnodbAsyncIo - support multiple background IO threads for InnoDB
 
 Other enhancements include:
   * LosslessFloatDump - support dump and restore of float/double without loss of precision
   * Use 8X less memory for account and table privileges
-  * Use fastest compression rather than the default level for client/mysqld networking 
-
+  * Use fastest compression rather than the default level for client/mysqld networking
+  * InnodbSampling - control the number of leaf blocks sampled for optimizer statistics
+  * InnodbStatus - display more statistics in *show innodb status*
 
 
