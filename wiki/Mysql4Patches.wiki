@@ -34,3 +34,6 @@ Other enhancements include:
   * Changed InnoDB to recover when InnoDB and MySQL data dictionaries are inconsistent
   * NewSqlFunctions - functions for checksums and floating point to string conversion
   * Backported *START SLAVE UNTIL*
+  * Sort float columns with the order: *-INF < negative < 0 < positive < +INF < NaN*
+  * Change *long_query_time* to be dynamic and log all queries when it is 0
+  * Count connection attempts tha are denied because of *max_connections* and display the count as *denied_connections*
