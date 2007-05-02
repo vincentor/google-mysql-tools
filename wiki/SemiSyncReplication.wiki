@@ -12,10 +12,44 @@ We have extended the replication protocol to be semi-synchronous on demand. It i
 
 Semi-synchronous replication is disabled when the timeout expires. It is automatically reenabled when slaves catch up on replication.
 
+= Configuration =
+
 The following parameters control this:
   * *rpl_semi_sync_enabled* configures a master to use semi-sync replication.
-  * *rpl_semi_sync_slave_enabled* configures a slave to use semi-sync replication
+  * *rpl_semi_sync_slave_enabled* configures a slave to use semi-sync replication. The IO thread must be restarted for this to take effect.
   * *rpl_semi_sync_timeout* is the timeout in milliseconds for the master
+
+= Monitoring =
+
+The following variables are exported from SHOW STATUS:
+  * Rpl_semi_sync_clients: number of semi-sync replication slaves
+  * Rpl_semi_sync_status: whether semi-sync is currently ON/OFF
+  * Rpl_semi_sync_slave_status: TBD
+  * Rpl_semi_sync_yes_tx: how many transaction got semi-sync reply
+  * Rpl_semi_sync_no_tx: how many transaction do not get semi-sync reply
+  * Rpl_semi_sync_no_times: TBD
+  * Rpl_semi_sync_timefunc_failures: how many gettimeofday() function fails
+  * Rpl_semi_sync_wait_sessions: how many sessions are waiting for replies
+  * Rpl_semi_sync_wait_pos_backtraverse: how many time we move waiting position back
+  * Rpl_semi_sync_net_avg_wait_time(us): the average network waiting time per tx
+  * Rpl_semI_sync_net_wait_time: total time in us waiting for ACKs
+  * Rpl_semi_sync_net_waits: how many times the replication thread waits on the network
+  * Rpl_semi_sync_tx_avg_wait_time(us): the average transaction waiting time
+  * Rpl_semi_sync_tx_wait_time: TBD
+  * Rpl_semi_sync_tx_waits: how many times transactions wait
+  * Rpl_semi_sync_timefunc_failures: #times gettimeofday calls fail
+
+= Design Overview =
+
+Semi-sync replication blocks any COMMIT until at least one replica has acknowledged receipt of the replication events for the transaction. This ensures that at least one replica has all transactions from the master. The protocol blocks return from commit. That is, it blocks after commit is complete in InnoDB and before commit returns to the user.
+
+This option must be enabled on a master and slaves that are close to the master. Only slaves that have this feature enabled participate in the protocol. Otherwise, slaves use the standard replication protocol.
+
+= Deployment =
+
+Semi-sync replication can be enabled/disabled on a master or slave without shutting down the database.
+
+Semi-sync replication is enabled on demand. If there are no semi-sync replicas or they are all behind in replication, semi-sync replication will be disabled after the first transaction wait timeout. When the semi-sync replicas catch up, transaction commits will wait again if the feature is not disabled.
 
 = Implementation =
 
