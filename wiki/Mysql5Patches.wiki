@@ -3,4 +3,5 @@
 
 = Introduction =
 
-These will have the same functionality as the MySQL 4 patches. Unfortunately, only some of the features have been ported. This will be updated when the patches have equivalent functionality.
+These will have the same functionality as the MySQL 4 patches. Unfortunately, only some of the features have been ported. The features that have been ported are:
+  * SemiSyncReplication
