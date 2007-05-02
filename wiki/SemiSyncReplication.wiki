@@ -53,4 +53,6 @@ Semi-sync replication is enabled on demand. If there are no semi-sync replicas o
 
 = Implementation =
 
+The design doc is at SemiSyncReplicationDesign.
+
 Each replication event sent to a semi-sync slave has two extra bytes at the start that indicate whether the event requires acknowledgement. The bytes are stripped by the slave IO thread and the rest of the event is processed as normal. When acknowledgement is requested, the slave IO thread responds using the existing connection to the master. Acknowledgement is requested for events that indicate the end of a transaction, such as commit or an insert with autocommit enabled.
