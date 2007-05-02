@@ -5,3 +5,4 @@
 
 These will have the same functionality as the MySQL 4 patches. Unfortunately, only some of the features have been ported. The features that have been ported are:
   * SemiSyncReplication
+  * SHOW PROCESSLIST reports the binlog offset being copied for a slave
