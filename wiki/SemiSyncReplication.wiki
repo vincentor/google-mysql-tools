@@ -2,13 +2,15 @@
 
 = Introduction =
 
-Heikki Tuuri worked on this first, but the community didn't demand it. Solid will offer their version of this later in 2007.
+Heikki Tuuri worked on this first, but there wasn't much demand for it, beyond my request. Solid will offer their version of this later in 2007. We couldn't wait and implemented it.
 
 The MySQL replication protocol is asynchronous. The master does not know when or whether a slave gets replication events. It is also efficient. A slave requests all replication events from an offset in a file. The master pushes events to the slave when they are ready.
 
 = Usage =
 
 We have extended the replication protocol to be semi-synchronous on demand. It is on demand because each slave registers as *async* or *semi-sync*. When semi-sync is enabled on the master, it blocks return from commit until either at least one semi-sync slave acknowledges receipt of all replication events for the transaction or until a configurable timeout expires.
+
+Semi-synchronous replication is disabled when the timeout expires. It is automatically reenabled when slaves catch up on replication.
 
 The following parameters control this:
   * *rpl_semi_sync_enabled* configures a master to use semi-sync replication.
