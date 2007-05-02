@@ -22,22 +22,22 @@ The following parameters control this:
 = Monitoring =
 
 The following variables are exported from SHOW STATUS:
-  * Rpl_semi_sync_clients: number of semi-sync replication slaves
-  * Rpl_semi_sync_status: whether semi-sync is currently ON/OFF
-  * Rpl_semi_sync_slave_status: TBD
-  * Rpl_semi_sync_yes_tx: how many transaction got semi-sync reply
-  * Rpl_semi_sync_no_tx: how many transaction do not get semi-sync reply
-  * Rpl_semi_sync_no_times: TBD
-  * Rpl_semi_sync_timefunc_failures: how many gettimeofday() function fails
-  * Rpl_semi_sync_wait_sessions: how many sessions are waiting for replies
-  * Rpl_semi_sync_wait_pos_backtraverse: how many time we move waiting position back
-  * Rpl_semi_sync_net_avg_wait_time(us): the average network waiting time per tx
-  * Rpl_semI_sync_net_wait_time: total time in us waiting for ACKs
-  * Rpl_semi_sync_net_waits: how many times the replication thread waits on the network
-  * Rpl_semi_sync_tx_avg_wait_time(us): the average transaction waiting time
-  * Rpl_semi_sync_tx_wait_time: TBD
-  * Rpl_semi_sync_tx_waits: how many times transactions wait
-  * Rpl_semi_sync_timefunc_failures: #times gettimeofday calls fail
+  * *Rpl_semi_sync_clients*: number of semi-sync replication slaves
+  * *Rpl_semi_sync_status*: whether semi-sync is currently ON/OFF
+  * *Rpl_semi_sync_slave_status*: TBD
+  * *Rpl_semi_sync_yes_tx*: how many transaction got semi-sync reply
+  * *Rpl_semi_sync_no_tx*: how many transaction do not get semi-sync reply
+  * *Rpl_semi_sync_no_times*: TBD
+  * *Rpl_semi_sync_timefunc_failures*: how many gettimeofday() function fails
+  * *Rpl_semi_sync_wait_sessions*: how many sessions are waiting for replies
+  * *Rpl_semi_sync_wait_pos_backtraverse*: how many time we move waiting position back
+  * *Rpl_semi_sync_net_avg_wait_time(us)*: the average network waiting time per tx
+  * *Rpl_semI_sync_net_wait_time*: total time in us waiting for ACKs
+  * *Rpl_semi_sync_net_waits*: how many times the replication thread waits on the network
+  * *Rpl_semi_sync_tx_avg_wait_time(us)*: the average transaction waiting time
+  * *Rpl_semi_sync_tx_wait_time*: TBD
+  * *Rpl_semi_sync_tx_waits*: how many times transactions wait
+  * *Rpl_semi_sync_timefunc_failures*: #times gettimeofday calls fail
 
 = Design Overview =
 
