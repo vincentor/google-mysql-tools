@@ -17,9 +17,9 @@ The commands are:
 
 = SHOW USER_STATISTICS =
 
-This displays:
-  * number of seconds this account has executed SQL commands
-  * number of concurrent connections
+This displays resource consumption for all sessions per database account:
+  * number of seconds executing SQL commands
+  * number of concurrent connections (the current value)
   * number of connections created
   * number of rollbacks
   * number of commits
