@@ -6,6 +6,7 @@
 These have the same functionality as the MySQL 4 patches. There are several patch sets:
    * the [http://google-mysql-tools.googlecode.com/svn/trunk/mysql-patches/mysql-5.0.37-patches big V1 patch] published in 2007
    * the [http://google-mysql-tools.googlecode.com/svn/trunk/mysql-patches/mysql-5.0.37_semisync.patch semi-sync replication V1] patch published in 2007.
+   * the big V2 patch to be published in 2008
 
 = Features =
 
