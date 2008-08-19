@@ -22,6 +22,7 @@ Examples of things we have changed that may break an application:
    * SemiSyncReplication
    * InnodbSmp
    * NewShowStatus
+   * NewShowInnodbStatus
    * NewConfiguration
    * UserTableMonitoring
    * TransactionalReplication
