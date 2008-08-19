@@ -4,7 +4,7 @@
 
 The access control model in MySQL does not scale for a deployment with thousands of accounts and thousands of tables. The problems are that similar privileges are specified for many accounts and that the only way to limit an account from accessing a table is to grant privileges at the table or column level in which case the _mysql.user_ table has millions of entries.
 
-Privileges may be associated once with a role, and then many accounts may be mapped to that role. When many accounts have the same privileges, this avoids the need to specify the privileges for each account. The intended use for this is to replace the shared _readonly_ account on replicas with private accounts.
+Privileges may be associated once with a role, and then many accounts may be mapped to that role. When many accounts have the same privileges, this avoids the need to specify the privileges for each account.
 
 We have implemented _mapped users_ in the MySQL access control model. These are used to simulate roles and solve one of these problems. A _mapped user_ provides authentication credentials and is mapped to a _role_ for access control. A new table, mysql.mapped_user, has been added to define mapped users. Entries in an existing table, mysql.user, are reused for roles when there are entries from mysql.mapped_user that reference them.
 
