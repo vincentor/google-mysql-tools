@@ -1,4 +1,4 @@
-#summary New varlues in *SHOW STATUS*
+#summary New values in *SHOW STATUS*
 
 = Notes =
 
