@@ -35,6 +35,7 @@ Examples of things we have changed that may break an application:
    * NewSqlFunctions
    * InnodbStatus
    * LosslessFloatDump
+   * MysqlHttp
 
 = Features in the V2 beta patch =
 
