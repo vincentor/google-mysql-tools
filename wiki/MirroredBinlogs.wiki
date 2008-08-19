@@ -1,5 +1,9 @@
 #summary Mirrored Binlogs
 
+= Note =
+
+This is only in the V1 patch. It has been removed from all other patches. GlobalTransactionIds should be used instead of it.
+
 = Introduction =
 
 MySQL replication is great. It is efficient, stable and easy to use. Unfortunately, it is not easy to use for hierarchical replication. The most important replication state on a slave is the name and offset for the file on the server from which it copies replication events. 
