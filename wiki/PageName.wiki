@@ -397,7 +397,7 @@ DELIMITER ;
 
 The granularity problem could be resolved by appending an index onto the event which effectively resets back to zero each second. With such an approach, our unique group ID then becomes the triple (server_id, timestamp, index). Such an approach has the advantage that it doesn't require the master to persist any new data; the index to use at server start would always be 0. Unfortunately, such an approach still isn't guaranteed to yield unique IDs as a machine's current time can be changed back to a time which it has already seen.
 
-== Testing Plan
+== Testing Plan ==
 
 MySQL has a unit test framework which already includes many replication test cases. Ensuring those tests all continue to pass after I made my code changes ensures that my changes don't break any existing functionality, but those cases will be limited to testing replicating from a server with my changes to another server also with my changes. To verify that there won't be any event log compatibilities rolling out a build with my changes, I will also setup multi-version replication scenarios:
 
