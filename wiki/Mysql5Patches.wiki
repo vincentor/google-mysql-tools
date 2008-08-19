@@ -13,7 +13,7 @@ These have the same functionality as the MySQL 4 patches. There are several patc
 We have changed a lot of code. Not all of the changes are described here and some of the changes to default behavior can break your applications. It is better to take pieces of the patch rather than try to use all of it.
 
 Examples of things we have changed that may break an application:
-   * *SHOW STATUS* displays global stats for MySQL 5 as was done for MySQL 4. In official MySQL 5, *SHOW STATUS* displays session statistics.
+   * *SHOW STATUS* displays global stats for MySQL 5 as was done for MySQL 4. In official MySQL 5, *SHOW STATUS* displays session statistics. This can make JDBC very unhappy. But you shouldn't be using Java anyways, even if MySQL has the most awesome JDBC drivers in the world.
    * On overflow for double and float, the result is not rounded to MAX_DOUBLE and MAX_FLOAT. It is INF as intended by ieee754.
    * For SHOW commands some result columns have been renamed to match those used for MySQL 4.
 
