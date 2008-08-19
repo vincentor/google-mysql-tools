@@ -1,22 +1,29 @@
 #summary New values in *SHOW STATUS*
 
-= Notes =
+= Overview =
+
+We have added extra values for monitoring. Much of the data from *SHOW INNODB STATUS* is now available in *SHOW STATUS*.
+
+We have also added rate limiting for both *SHOW STATUS* and *SHOW INNODB STATUS* to reduce the overhead from overzealous monitoring tools. This limits how frequently the expensive operations are done for these SHOW commands.
+
+= General =
 
 The new values include:
   * Binlog_events - number of replication events written to the binlog
   * Binlog_largest_event - larget event in the current binlog
   * Denied_connections - number of connection attempts that fail because of the max_connections limit
   * Malloc_sbrk_bytes_alloc, Malloc_chunks_free, Malloc_mmap_chunks_alloc, Malloc_mmap_bytes_alloc, Malloc_bytes_used, Malloc_bytes_free - values reported from mallinfo()
-  * Vm_size, Vm_data, Vm_rss - data extracted from /proc for the mysqld process
+  * Gettimeofday_errors - errors for gettimeofday calls (yes, this happens)
+  * Sort_filesort_old - number of times the old filesort algorithm is used
+  * Sort_filesort_new - number of times the new filesort algorithm is used
 
-Values for replication:
+= Replication =
   * Replication_fail_io_connections - on a slave, number of times the IO thread has disconnected from the master because of an error
+  * Replication_total_io_connections - number of connections made by the IO thread to the master
   * Replication_last_event_buffered - on a slave, time when last replication event received
   * Replication_last_event_done - on a slave, time when last replication event replayed
-  * Rpl_mirror_binlog_clients - number of slaves connected to a slave serving from a mirror binlog
-  * Rpl_mirror_binlog_status - indicates the health of the mirror binlog
 
-Values for semi-synchronous replication:
+= Semi-synchronous replication =
   * Rpl_semi_sync_clients - number of semi-sync clients connected to a master
   * Rpl_semi_sync_net_avg_wait_time(us) - average time to wait for an acknowledgement of a replication event from a semi-sync slave
   * Rpl_semi_sync_net_wait_time - total time waiting for acknowledgement
@@ -33,3 +40,44 @@ Values for semi-synchronous replication:
   * Rpl_semi_sync_wait_sessions
   * Rpl_semi_sync_yes_tx - number of transactions acknowledged by semi-sync slaves
   * Rpl_transaction_support
+
+= Innodb =
+
+   * Innodb_dict_size - number of bytes used for the InnoDB dictionary
+   * Innodb_have_atomic_builtins - indicates whether InnoDB uses atomic memory operations in place of pthreads synchronization functions
+   * Innodb_heap_enabled - indicates  whether the InnoDB malloc heap was enabled -- see [http://bugs.mysql.com/bug.php?id=38531 Bug38531]
+   * Innodb_long_lock_wait - set when there is a long lock wait on an internal lock. These usually indicate an InnoDB bug. They also occur because the adaptive hash latch is not always released when it should be (such as during an external sort).
+   * Innodb_long_lock_waits - incremented once for each internal long lock wait
+   * Innodb_os_read_requests - from SHOW INNODB STATUS
+   * Innodb_os_write_requests - from SHOW INNODB STATUS
+   * Innodb_os_pages_read - from SHOW INNODB STATUS
+   * Innodb_os_pages_written - from SHOW INNODB STATUS
+   * Innodb_os_read_time - from SHOW INNODB STATUS
+   * Innodb_os_write_time - from SHOW INNODB STATUS
+   * Innodb_time_per_read - milliseconds per read
+   * Innodb_time_per_write - milliseconds per write
+   * Innodb_deadlocks - application deadlocks, detected automatically
+   * Innodb_transaction_count - from SHOW INNODB STATUS
+   * Innodb_transaction_purge_count - from SHOW INNODB STATUS
+   * Innodb_transaction_purge_lag - count of work to be done by the InnoDB purge thread, see [http://mysqlha.blogspot.com/2008/07/how-do-you-know-when-innodb-gets-behind.html InnodbLag]
+   * Innodb_active_transactions - from SHOW INNODB STATUS
+   * Innodb_summed_transaction_age - from SHOW INNODB STATUS
+   * Innodb_longest_transaction_age - from SHOW INNODB STATUS
+   * Innodb_lock_wait_timeouts - count of lock wait timeouts
+   * Innodb_lock_waiters - from SHOW INNODB STATUS
+   * Innodb_summed_lock_wait_time - from SHOW INNODB STATUS
+   * Innodb_longest_lock_wait - from SHOW INNODB STATUS
+   * Innodb_pending_normal_aio_reads - from SHOW INNODB STATUS
+   * Innodb_pending_normal_aio_writes - from SHOW INNODB STATUS
+   * Innodb_pending_ibuf_aio_reads - from SHOW INNODB STATUS
+   * Innodb_pending_log_ios - from SHOW INNODB STATUS
+   * Innodb_pending_sync_ios - from SHOW INNODB STATUS
+   * Innodb_os_reads - from SHOW INNODB STATUS
+   * Innodb_os_writes - from SHOW INNODB STATUS
+   * Innodb_os_fsyncs - from SHOW INNODB STATUS
+   * Innodb_ibuf_inserts - from SHOW INNODB STATUS
+   * Innodb_ibuf_size - counts work to be done by the insert buffer, see [http://mysqlha.blogspot.com/2008/07/how-do-you-know-when-innodb-gets-behind.html InnodbLag]
+   * Innodb_ibuf_merged_recs - from SHOW INNODB STATUS
+   * Innodb_ibuf_merges - from SHOW INNODB STATUS
+   * Innodb_log_ios_done - from SHOW INNODB STATUS
+   * Innodb_buffer_pool_hit_rate - from SHOW INNODB STATUS
