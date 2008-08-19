@@ -1,0 +1,42 @@
+#summary New server configuration variables
+
+= Introduction =
+
+   * http_enable - start the embedded HTTP demon when ON, see MysqlHttp
+   * http_port - port on which HTTP listens, see MysqlHttp
+   * innodb_max_merged_io - max number of IO requests merged into one large request by a background IO thread
+   * innodb_read_io_threads, innodb_write_io_threads - number of background IO threads for prefetch reads and dirty page writes, see InnodbAsyncIo
+   * show_command_compatible_mysql4 - make output from some SHOW commands match that used by MySQL4
+   * show_default_global - make SHOW STATUS use global statistics
+   * global_status_update_interval - the interval at which per-thread stats are read for SHOW STATUS. When SHOW STATUS is run more frequently cached values are used rather than locking and reading data from each thread.
+   * google_compatible_mysql4 - allow compatibility for some mysql4 syntax
+   * google_profile[=name] - enable profiling using Google Perftools and write output to this file. Server must have been compiled to use Google Perftools.
+   * equality_propagation - enables use of equality propagation in the optimizer
+   * trim_trailing_blanks - trim trailing blanks on varchar fields when set
+   * allow_view_trigger_sp_subquery - allow use of views, triggers, stored procedures and subqueries when set
+   * allow_delayed_write - allow use of delayed insert and replace statements
+   * local-infile-needs-file - LOAD DATA LOCAL INFILE requires the FILE privilege when set  
+   * audit_log[=name] - log logins, queries against specified tables, and startup
+   * audit_log_tables=name - log queries that use these tables to the audit log (comma separated)
+   * log_root - log DML done by users with the SUPER privilege
+   * repl_port[=#] - extra port on which mysqld listens for connections from users with SUPER and replication privileges
+   * rpl_always_reconnect_on_error - slave IO thread always tries to reconnect on error when set
+   * rpl_always_enter_innodb - slave SQL thread always enter innodb when set regardless of innodb concurrency ticket count
+   * rpl_event_buffer_size=# - size of the per-connection buffer used on the master to copy events to a slave. Avoids allocating/deallocating a buffer for each event.
+   * reserved_super_connections=# - number of reserved connections for users with SUPER privileges.
+   * rpl_always_begin_event - always add a BEGIN event at the beginning of each transaction block written to the binlog. This fixes a bug.
+   * rpl_semi_sync_enabled - enable SemiSyncReplication on a master
+   * rpl_semi_sync_slave_enabled - enable SemiSyncReplication on a slave
+   * rpl_semi_sync_timeout - timeout in milliseconds for SemiSyncReplication in the master
+   * rpl_semi_sync_trace_level - trace level for debugging SemiSyncReplication
+   * rpl_transaction_enabled - use TransactionalReplication on a slave
+   * innodb_crash_if_init_fails - crash if InnoDB initialization fails
+   * innodb_io_capacity - number of disk IOPs the server can do, see InnodbIoTuning
+   * innodb_extra_dirty_writes - flush dirty buffer pages when dirty pct is less than max dirty pct
+   * connect_must_have_super - only connections with SUPER_ACL, REPL_SLAVE_ACL or REPL_CLIENT_ACL are accepted (yes, this is dynamic)
+   * readonly_databases - prevents writes to any DB except for mysql
+   * readonly_mysql - prevents writes to mysql DB will fail.
+   * fixup_binlog_end_pos - fix for MySQL bug 23171 which updates the end_log_pos of  binlog events as they are written to the  bin log.
+   * log_slave_connects - log connect and disconnect messages for replication slaves
+   * mapped_users - use the mapped_user table to map users to roles
+   * xa_enabled - enable support for XA transactions (I like to disable this)
