@@ -1,0 +1,44 @@
+#summary Statistics for mutexes
+
+= Note =
+
+This code has been built on an x86-64 server that uses gcc and Linux 2.6. I don't know if it works on other platforms.
+
+The code is [http://code.google.com/p/google-mysql-tools/source/browse/trunk/mysql-patches/mutexstats-5.1.26.patch here].
+
+= Introduction =
+
+This patch provides mutex contention statistics for MySQL. It is similar to the output provided for InnoDB mutexes by the SQL command [http://dev.mysql.com/doc/refman/5.0/en/show-mutex-status.html SHOW MUTEX STATUS].
+
+It also uses busy-wait loops before blocking on lock requests. The main reason for doing this is to determine whether there is mutex contention. If the lock is not obtained during the busy-wait loop, the code assumes that the caller has to block on the lock request. The duration of the busy-wait loop is determined by the my.cnf variable *mysql_spin_wait_loops*. The default value is 500 which produces a 4 microsecond delay on a current x86_64 CPU. The delay is measured at mysqld startup and printed in the database error log. It is also displayed in the SHOW STATUS variable *Mysql_spin_wait_microseconds*.
+
+For a given lock attempt, the busy wait time is randomized by iterating a loop between 1 and MAX times where MAX is the value of *mysql_spin_wait_loops*. I changed the function that computes the random value to use code from InnoDB as the existing code uses random() from libc which has its own mutex contention problem.
+
+The busy-wait loop does up to four rounds. At each round it makes a non-blocking lock attempt. If it does not get the lock it spins for 1 microsecond (assuming my platform). After the fourth failed attempt a blocking lock attempt is done and the Sleeps counter is incremented.
+
+Note that the primary purpose for spinning is to identify mutex contention. It is not done to improve performance. I use it in performance debugging builds rather than in production builds. This is enabled when the flag *--with-fast-mutexes* is used to configure a build. 
+
+The data is exported by the SQL command SHOW GLOBAL MUTEX STATUS. Sample output is displayed below. The output has several columns:
+  * *Locks* is the number of times a blocking pthread call had to be used to lock the mutex or rw-lock. This means that the lock could not be obtained by the non-blocking trylock commands during the busy-wait loop.
+  * *Spins* is the number of rounds done by the busy-wait loop. This is at most 4 times *Locks*.
+  * *Sleeps* is the number of blocking lock attempts. This is <= *Locks*.
+  * *Name* is the name of the file at which the mutex or rw-lock is created.
+  * *Line* is the line number in the file at which the mutex or rw-lock is created.
+  * *Users* is the number of times the mutex or rw-lock is created.
+
+Sample output:
+{{{
+Locks   Spins   Sleeps  Name    Line    Users
+1       0       0       my_thr_init.c   287     68
+172     0       0       mysqld.cc       3081    1
+0       0       0       slave.h 453     1
+4229999 114473  1883    thr_lock.c      319     111742
+}}}
+
+The statistics may be inaccurate:
+  * locks are not used to read or write the statistics counters
+  * a fixed-size array of counters is used. An array entry may be used by multiple mutexes and rw-locks because the entry to use for a given mutex or rw-lock is determined by computing a hash function from the filename and line number from the code that creates the lock
+
+= Thanks =
+
+I copied code from InnoDB for hashing and random number generation. Thanks InnoDB.
