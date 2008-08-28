@@ -236,4 +236,4 @@ With data from the worst case:
 <img style='border: 1px outset gray' src="inserts_on_16-core_server.png">
 
 Without data from the worst case:
-<img style='border: 1px outset gray' src="inserts_on_16-core_server,_v2.png">
+http://google-mysql-tools.googlecode.com/files/inserts_on_16-core_server%2C_v2.png
