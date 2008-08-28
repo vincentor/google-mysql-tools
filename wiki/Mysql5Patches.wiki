@@ -38,6 +38,7 @@ Examples of things we have changed that may break an application:
    * LosslessFloatDump
    * MysqlHttp
    * InnodbIoTuning
+   * MutexContentionStats
 
 = Features in the V2 beta patch =
 
