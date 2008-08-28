@@ -1,4 +1,5 @@
 #summary Statistics for mutexes
+#labels Featured
 
 = Note =
 
