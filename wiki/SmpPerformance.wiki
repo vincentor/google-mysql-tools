@@ -2,12 +2,12 @@
 
 = SMP Performance Improvements =
 
-This describes performance improvements from changes in the v2 Google patch. It improves performance on SMP servers by:
+This describes performance improvements from changes in the v2 Google patch. While the changes improve performance in many cases, a lot of work remains to be done. It improves performance on SMP servers by:
   * disabling the InnoDB memory heap and associated mutex
   * replacing the InnoDB rw-mutex and mutex on x86 platforms
   * linking with tcmalloc
 
-While tcmalloc makes some of the workloads much faster, we don't recommend its use yet with MySQL as we are still determining its behavior with MySQL.
+While tcmalloc makes some of the workloads much faster, we don't recommend its use yet with MySQL as we are still investigating its behavior.
 
 == Database reload ==
 
