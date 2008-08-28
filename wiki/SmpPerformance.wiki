@@ -40,7 +40,7 @@ The servers are:
   * smpfix - the smpfix RPM on an 8-core x86 server
   * smpfix-notcmalloc - the smpfix RPM on an 8-core x86 server without tcmalloc
 
-<img style='border: 1px outset gray' src="reload_time.png">
+http://google-mysql-tools.googlecode.com/files/reload_time.png
 
 == Sysbench readwrite ==
 
@@ -87,15 +87,15 @@ The servers are:
 
 === sysbench rw, 4-core server ===
 
-<img style='border: 1px outset gray' src="sysbench_readwrite_on_4-core_server.png">
+http://google-mysql-tools.googlecode.com/files/sysbench_readwrite_on_4-core_server.png
 
 === sysbench rw, 8-core server ===
 
-<img style='border: 1px outset gray' src="sysbench_readwrite_on_8-core_server.png">
+http://google-mysql-tools.googlecode.com/files/sysbench_readwrite_on_8-core_server.png
 
 === sysbench rw, 16-core server ===
 
-<img style='border: 1px outset gray' src="sysbench_readwrite_on_16-core_server.png">
+http://google-mysql-tools.googlecode.com/files/sysbench_readwrite_on_16-core_server.png
 
 == Sysbench readonly ==
 
@@ -142,15 +142,17 @@ The servers are:
 
 === sysbench ro, 4-core server ===
 
-<img style='border: 1px outset gray' src="sysbench_readonly_on_4-core_server.png">
+http://google-mysql-tools.googlecode.com/files/sysbench_readonly_on_4-core_server.png
 
 === sysbench ro, 8-core server ===
 
-<img style='border: 1px outset gray' src="sysbench_readonly_on_8-core_server.png">
+
+http://google-mysql-tools.googlecode.com/files/sysbench_readonly_on_8-core_server.png
 
 === sysbench ro, 16-core server ===
 
-<img style='border: 1px outset gray' src="sysbench_readonly_on_16-core_server.png">
+
+http://google-mysql-tools.googlecode.com/files/sysbench_readonly_on_16-core_server.png
 
 == Concurrent joins ==
 
@@ -174,27 +176,27 @@ The servers are:
 
 === joins, 4-core server ===
 
-Note, lower values for Time are better.
+TODO
 
 === joins, 8-core server ===
 
 Note, lower values for Time are better.
 
 With data from the worst case:
-<img style='border: 1px outset gray' src="joins_on_8-core_server.png">
+http://google-mysql-tools.googlecode.com/files/joins_on_8-core_server.png
 
 Without data from the worst case:
-<img style='border: 1px outset gray' src="joins_on_8-core_server,_v2.png">
+http://google-mysql-tools.googlecode.com/files/joins_on_8-core_server%2C_v2.png
 
 === joins, 16-core server ===
 
 Note, lower values for Time are better.
 
 With data from the worst case:
-<img style='border: 1px outset gray' src="joins_on_16-core_server.png">
+http://google-mysql-tools.googlecode.com/files/joins_on_16-core_server.png
 
 Without data from the worst case:
-<img style='border: 1px outset gray' src="joins_on_16-core_server,_v2.png">
+http://google-mysql-tools.googlecode.com/files/joins_on_16-core_server%2C_v2.png
 
 == Concurrent inserts ==
 
