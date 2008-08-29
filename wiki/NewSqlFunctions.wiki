@@ -37,3 +37,7 @@ This is a SQL function. It returns the hash of its input argument. It is not an 
 {{{
 select hash(column) from foo
 }}}
+
+= LAST_VALUE =
+
+This is a SQL aggregate function. It returns the last value read per group. Thus this depends on the input order to aggregation
