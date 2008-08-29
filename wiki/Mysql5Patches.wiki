@@ -17,8 +17,24 @@ Examples of things we have changed that may break an application:
    * On overflow for double and float, the result is not rounded to MAX_DOUBLE and MAX_FLOAT. It is INF as intended by ieee754.
    * For SHOW commands some result columns have been renamed to match those used for MySQL 4.
 
+= Authors =
+
+A lot of people have contributed to this:
+  * Wei Li
+  * Gene Pang
+  * Eric Rollins
+  * Ben Handy
+  * Justin Tolmer
+  * Larry Zhou
+  * Yuan Wei
+  * Robert Banz
+  * Chip Turner
+  * Steve Gunn
+  * Mark Callaghan
+
 = Features in the V2 patch =
 
+   * SqlChanges
    * SemiSyncReplication
    * InnodbSmp
    * NewShowStatus
