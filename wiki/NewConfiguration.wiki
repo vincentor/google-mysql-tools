@@ -9,7 +9,6 @@
    * show_command_compatible_mysql4 - make output from some SHOW commands match that used by MySQL4
    * show_default_global - make SHOW STATUS use global statistics
    * global_status_update_interval - the interval at which per-thread stats are read for SHOW STATUS. When SHOW STATUS is run more frequently cached values are used rather than locking and reading data from each thread.
-   * google_compatible_mysql4 - allow compatibility for some mysql4 syntax
    * google_profile[=name] - enable profiling using Google Perftools and write output to this file. Server must have been compiled to use Google Perftools.
    * equality_propagation - enables use of equality propagation in the optimizer
    * trim_trailing_blanks - trim trailing blanks on varchar fields when set
