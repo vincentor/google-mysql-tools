@@ -11,7 +11,7 @@ While tcmalloc makes some of the workloads much faster, we don't recommend its u
 
 == Database reload ==
 
-This displays the time to reload a large database shard on a variety of servers (HW + SW). Unless otherwise stated, my.cnf was optimized for a fast reload with the following values:
+This displays the time to reload a large database shard on a variety of servers (HW + SW). Unless otherwise stated, my.cnf was optimized for a fast reload with the following values. Note that *innodb_flush_method=nosync* is only in the Google patch and is *NOT* crash safe (kind of like MyISAM).
   * innodb_log_file_size=1300M
   * innodb_flush_method=nosync
   * innodb_buffer_pool_size=8000M
