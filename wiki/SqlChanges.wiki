@@ -1,0 +1,71 @@
+#summary Changes to SQL
+
+= Introduction =
+
+This describes changes to SQL parsed by MySQL.
+
+= New tokens =
+
+  * CLIENT_STATISTICS
+  * TABLE_STATISTICS
+  * USER_STATISTICS
+  * INDEX_STATISTICS
+  * IF_IDLE
+  * MAKE
+  * MAPPED
+  * MAX_QUERIES_PER_MINUTE
+  * NEW_PASSWORD
+  * ROLE
+  * SLOW
+  * TCMALLOC
+  * IEEE754_TO_STRING
+  * LAST_VALUE
+  * ORDERED_CHECKSUM
+  * UNORDERED_CHECKSUM
+
+= New SQL functions =
+
+See NewSqlFunctions for more details:
+  * ORDERED_CHECKSUM
+  * UNORDERED_CHECKSUM
+  * LAST_VALUE
+  * HASH
+  * IEEE754_TO_STRING
+  * NEW_PASSWORD
+
+= New options for existing statements =
+
+*KILL <id> IF_IDLE* can be used to kill a connection but only if it is idle.
+
+*MAX_QUERIES_PER_MINUTE* can be used in place of *MAX_QUERIES_PER_HOUR*. This version of MySQL enforces query limits per minute rather than per hour and the value stored in the MySQL privilege table is the rate per minute.
+
+*CREATE MAPPED USER 'foo' ROLE 'bar'* and *DROP MAPPED USER 'foo'* support mapped users. See MysqlRoles for more details.
+
+*SHOW PROCESSLIST WITH ROLES* and *SHOW USER_STATISTICS WITH ROLES* use the role name rather than the user name in results.
+
+= New statements =
+
+See UserTableMonitoring for more details:
+  * *SHOW USER_STATISTICS*
+  * *SHOW TABLE_STATISTICS*
+  * *SHOW INDEX_STATISTICS*
+  * *SHOW CLIENT_STATISTICS*
+  * *FLUSH TABLE_STATISTICS*
+  * *FLUSH INDEX_STATISTICS*
+  * *FLUSH CLIENT_STATISTICS*
+
+See MysqlRateLimiting for more details:
+  * *MAKE USER 'foo' DELAYED 1000*
+  * *MAKE CLIENT '10.0.0.1' DELAYED 2000*
+  * *SHOW DELAYED USER*
+  * *SHOW DELAYED CLIENT*
+
+*SHOW TCMALLOC STATUS* displays the status of tcmalloc when MySQL hash been linked with it and compiled with -DUSE_TCMALLOC. This displays the output from MallocExtension::GetStats.
+
+*CAST* supports cast to *DOUBLE*.
+
+*SHOW INNODB LOCKS* provides more details on InnoDB lock holders and waiters.
+
+*FLUSH SLOW QUERY LOGS* rotates the slow query log.
+
+*MAKE MASTER REVOKE SESSION* disconnects all sessions but the current one and prevents future connections from all users unless they have SUPER, REPL_CLIENT or REPL_SLAVE privileges. *MAKE MASTER GRANT SESSION* undoes this.
