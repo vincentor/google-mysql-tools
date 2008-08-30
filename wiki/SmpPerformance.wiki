@@ -41,7 +41,7 @@ The servers are:
   * onlymalloc - the base RPM on an 8-core x86 server with the InnoDB malloc heap disabled
   * smpfix-notcmalloc - the smpfix RPM on an 8-core x86 server without tcmalloc
 
-http://google-mysql-tools.googlecode.com/files/reload_time.png
+http://google-mysql-tools.googlecode.com/files/reload_time.v1.png
 
 == Sysbench readwrite ==
 
