@@ -93,7 +93,7 @@ http://google-mysql-tools.googlecode.com/files/sysbench_readwrite_on_4-core_serv
 
 === sysbench rw, 8-core server ===
 
-http://google-mysql-tools.googlecode.com/files/sysbench_readwrite_on_8-core_server.png
+http://google-mysql-tools.googlecode.com/files/sysbench_readwrite_on_8-core_server.v1.png
 
 === sysbench rw, 16-core server ===
 
@@ -149,8 +149,7 @@ http://google-mysql-tools.googlecode.com/files/sysbench_readonly_on_4-core_serve
 
 === sysbench ro, 8-core server ===
 
-
-http://google-mysql-tools.googlecode.com/files/sysbench_readonly_on_8-core_server.png
+http://google-mysql-tools.googlecode.com/files/sysbench_readonly_on_8-core_server.v2.png
 
 === sysbench ro, 16-core server ===
 
