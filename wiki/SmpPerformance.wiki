@@ -80,6 +80,7 @@ The servers are:
   * tc4 - MySQL 5.0.37 without the smp fix, innodb_thread_concurrency=4
   * smpfix - MySQL 5.0.37 with the smp fix and tcmalloc
   * notcmalloc - MySQL 5.0.37 with the smp fix, not linked with tcmalloc
+  * onlymalloc - MySQL 5.0.37 with the InnoDB malloc heap disabled
   * my4026 - unmodified MySQL 4.0.26
   * my4122 - unmodified MySQL 4.1.22
   * my5067 - unmodified MySQL 5.0.67
@@ -135,6 +136,7 @@ The servers are:
   * tc4 - MySQL 5.0.37 without the smp fix, innodb_thread_concurrency=4
   * smpfix - MySQL 5.0.37 with the smp fix and tcmalloc
   * notcmalloc - MySQL 5.0.37 with the smp fix, not linked with tcmalloc
+  * onlymalloc - MySQL 5.0.37 with the InnoDB malloc heap disabled
   * my4026 - unmodified MySQL 4.0.26
   * my4122 - unmodified MySQL 4.1.22
   * my5067 - unmodified MySQL 5.0.67
@@ -169,6 +171,7 @@ The servers are:
   * tc4 - MySQL 5.0.37 without the smp fix, innodb_thread_concurrency=4
   * smpfix - MySQL 5.0.37 with the smp fix and tcmalloc
   * notcmalloc - MySQL 5.0.37 with the smp fix, not linked with tcmalloc
+  * onlymalloc - MySQL 5.0.37 with the InnoDB malloc heap disabled
   * my4026 - unmodified MySQL 4.0.26
   * my4122 - unmodified MySQL 4.1.22
   * my5067 - unmodified MySQL 5.0.67
@@ -184,10 +187,10 @@ TODO
 Note, lower values for Time are better.
 
 With data from the worst case:
-http://google-mysql-tools.googlecode.com/files/joins_on_8-core_server.png
+http://google-mysql-tools.googlecode.com/files/joins_on_8-core_server.v1.png
 
 Without data from the worst case:
-http://google-mysql-tools.googlecode.com/files/joins_on_8-core_server%2C_v2.png
+http://google-mysql-tools.googlecode.com/files/joins_on_8-core_server.o.v1.png
 
 === joins, 16-core server ===
 
@@ -218,6 +221,7 @@ The servers are:
   * tc4 - MySQL 5.0.37 without the smp fix, innodb_thread_concurrency=4
   * smpfix - MySQL 5.0.37 with the smp fix and tcmalloc
   * notcmalloc - MySQL 5.0.37 with the smp fix, not linked with tcmalloc
+  * onlymalloc - MySQL 5.0.37 with the InnoDB malloc heap disabled
   * my4026 - unmodified MySQL 4.0.26
   * my4122 - unmodified MySQL 4.1.22
   * my5067 - unmodified MySQL 5.0.67
@@ -236,10 +240,10 @@ http://google-mysql-tools.googlecode.com/files/inserts_on_4-core_server.png
 Note, lower values for Time are better.
 
 With data from the worst case:
-http://google-mysql-tools.googlecode.com/files/inserts_on_8-core_server.png
+http://google-mysql-tools.googlecode.com/files/inserts_on_8-core_server.v1.png
 
 Without data from the worst case:
-http://google-mysql-tools.googlecode.com/files/inserts_on_8-core_server%2C_v2.png
+http://google-mysql-tools.googlecode.com/files/inserts_on_8-core_server.o.v1.png
 
 === inserts, 16-core server ===
 
