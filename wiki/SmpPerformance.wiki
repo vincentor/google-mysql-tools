@@ -200,7 +200,17 @@ http://google-mysql-tools.googlecode.com/files/joins_on_16-core_server%2C_v2.png
 
 == Concurrent inserts ==
 
-This test reloads tables in parallel. Each connection inserts data for a different table. Tests were run using 1, 2, 4, 8 and 16 concurrent sessions. The regression for 5.0.37 is in the parser and was fixed by 5.0.54. Each insert statement is for 1000 rows and is done with auto-commit.
+This test reloads tables in parallel. Each connection inserts data for a different table. Tests were run using 1, 2, 4, 8 and 16 concurrent sessions. The regression for 5.0.37 is in the parser and was fixed by 5.0.54. 
+
+A separate table is used for each connection. DDL for the tables is:
+{{{
+create table T$i (i int primary key, j int, index jx(j)) engine=innodb
+}}}
+
+Multi-row insert statements are used that insert 1000 rows per insert statement. Auto-commit is used. The insert statements look like:
+{{{
+INSERT INTO T1 VALUES (0, 0), (1, 1), (2, 2), ..., (999,999);
+}}}
 
 The servers are:
   * base - MySQL 5.0.37 without the smp fix
