@@ -38,6 +38,7 @@ The servers are:
   * smpfix-4core - the smpfix RPM on a 4-core x86 server
   * smpfix-512M - the smpfix RPM on an 8-core x86 server with innodb_log_file_size=512M
   * smpfix - the smpfix RPM on an 8-core x86 server
+  * onlymalloc - the base RPM on an 8-core x86 server with the InnoDB malloc heap disabled
   * smpfix-notcmalloc - the smpfix RPM on an 8-core x86 server without tcmalloc
 
 http://google-mysql-tools.googlecode.com/files/reload_time.png
