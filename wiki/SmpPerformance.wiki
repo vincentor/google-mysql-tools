@@ -11,7 +11,7 @@ While tcmalloc makes some of the workloads much faster, we don't recommend its u
 
 == Database reload ==
 
-This displays the time to reload a large database shard on a variety of servers (HW + SW). Unless otherwise stated, my.cnf was optimized for a fast (but unsafe) reload with the following values. Note that *innodb_flush_method=nosync* is only in the Google patch and is *NOT* crash safe (kind of like MyISAM).
+This displays the time to reload a large database shard on a variety of servers (HW + SW). Unless otherwise stated, my.cnf was optimized for a fast (but unsafe) reload with the following values. Note that *innodb_flush_method=nosync* is only in the Google patch and is *NOT* crash safe (kind of like MyISAM). This uses a real data set that produces a 100GB+ database.
   * innodb_log_file_size=1300M
   * innodb_flush_method=nosync
   * innodb_buffer_pool_size=8000M
@@ -200,7 +200,7 @@ http://google-mysql-tools.googlecode.com/files/joins_on_16-core_server%2C_v2.png
 
 == Concurrent inserts ==
 
-This test reloads tables in parallel. Each connection inserts data for a different table. Tests were run using 1, 2, 4, 8 and 16 concurrent sessions. The regressionfor 
+This test reloads tables in parallel. Each connection inserts data for a different table. Tests were run using 1, 2, 4, 8 and 16 concurrent sessions. The regression for 5.0.37 is in the parser and was fixed by 5.0.54. Each insert statement is for 1000 rows and is done with auto-commit.
 
 The servers are:
   * base - MySQL 5.0.37 without the smp fix
