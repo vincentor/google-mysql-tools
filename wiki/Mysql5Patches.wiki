@@ -60,4 +60,7 @@ A lot of people have contributed to this:
 
 = Features in the V2 beta patch =
 
+This has not been released yet.
    * GlobalTransactionIds
+   * OnlineDataDrift
+   * MysqlThreadPool
