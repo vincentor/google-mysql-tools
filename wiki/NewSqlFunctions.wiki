@@ -7,6 +7,8 @@ New SQL functions have been added:
   * UNORDERED_CHECKSUM
   * ORDERED_CHECKSUM
   * HASH
+  * LAST_VALUE
+  * NEW_PASSWORD
 
 = IEEE754_TO_STRING =
 
@@ -17,8 +19,8 @@ Converts a float or double decimal value with type string. This generates 17 dig
 This is a SQL aggregate function that accepts one or more arguments. It returns the hash of its input arguments per group. The function is order independent. The result from each row in a group is combined by XOR.
 
 {{{
-select hash(c1) from foo group by c2;
-select hash(c1, c2) from foo group by c3;
+select unordered_checksum(c1) from foo group by c2;
+select unordered_checksum(c1, c2) from foo group by c3;
 }}}
 
 = ORDERED_CHECKSUM =
@@ -26,8 +28,8 @@ select hash(c1, c2) from foo group by c3;
 This is a SQL aggregate function that accepts one or more arguments. It returns the hash of its input arguments per group. The function is order dependent. The output of this from the first row in a group is used as the seed for the hash on the next row.
 
 {{{
-select hash(c1) from foo group by c2;
-select hash(c1, c2) from foo group by c3;
+select ordered_checksum(c1) from foo group by c2;
+select ordered_checksum(c1, c2) from foo group by c3;
 }}}
 
 = HASH =
@@ -40,7 +42,7 @@ select hash(column) from foo
 
 = LAST_VALUE =
 
-This is a SQL aggregate function. It returns the last value read per group. Thus this depends on the input order to aggregation
+This is a SQL aggregate function. It returns the last value read per group. Thus this depends on the input order to aggregation. See OnlineDataDrift for a use case.
 
 = NEW_PASSWORD =
 
