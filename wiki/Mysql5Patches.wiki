@@ -14,6 +14,8 @@ SmpPerformance has results for a variety of MySQL versions on 4, 8 and 16 core s
 
 We have changed a lot of code. Not all of the changes are described here and some of the changes to default behavior from new my.cnf variables can break your applications. Unless your name rhymes with Domas, it might be better to take pieces of the patch rather than try to use all of it.
 
+The code has been changed to make MySQL more manageable, available and scalable. Many problems remain to be solved to improve SMP performance. This is a good start.
+
 = Authors =
 
 A lot of people have contributed to this:
