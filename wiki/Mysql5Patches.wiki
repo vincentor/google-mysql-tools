@@ -24,6 +24,8 @@ The embedded server, *--with-embedded-server*, cannot be built with these change
 
 Many of the Makefile.in and Makefile.am files have been changed in the big patch because we changed InnoDB to use the top-level configure.
 
+If you try to install the big patch, treat it like [http://dev.mysql.com/doc/refman/5.0/en/installing-source-tree.html installing from a source tree].
+
 = Authors =
 
 A lot of people have contributed to this:
