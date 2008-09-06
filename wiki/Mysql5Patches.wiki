@@ -22,6 +22,8 @@ The code has been tested on 32-bit and 64-bit Linux. We may have broken the buil
 
 The embedded server, *--with-embedded-server*, cannot be built with these changes. We have broken the build for it.
 
+Many of the Makefile.in and Makefile.am files have been changed in the big patch because we changed InnoDB to use the top-level configure.
+
 = Authors =
 
 A lot of people have contributed to this:
