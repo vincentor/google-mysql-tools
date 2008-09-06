@@ -58,6 +58,7 @@ A lot of people have contributed to this:
    * MysqlHttp
    * InnodbIoTuning
    * MutexContentionStats
+   * FastMutexes
 
 = Features in the V2 beta patch =
 
