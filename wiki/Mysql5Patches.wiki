@@ -18,7 +18,7 @@ SmpPerformance has results for a variety of MySQL versions on 4, 8 and 16 core s
 
 We have changed a lot of code. Not all of the changes are described here and some of the changes to default behavior from new my.cnf variables can break your applications. Unless your name rhymes with Domas, it might be better to take pieces of the patch rather than try to use all of it.
 
-The code has been tested on 32-bit and 64-bit Linux. We may have broken the build for other platforms.
+The code has been tested on 32-bit and 64-bit Linux x86. We may have broken the build for other platforms.
 
 The embedded server, *--with-embedded-server*, cannot be built with these changes. We have broken the build for it.
 
