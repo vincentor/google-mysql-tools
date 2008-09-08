@@ -71,6 +71,7 @@ A lot of people have contributed to this:
    * InnodbIoTuning
    * MutexContentionStats
    * FastMutexes
+   * InnodbFreeze
 
 = Features in the V2 beta patch =
 
