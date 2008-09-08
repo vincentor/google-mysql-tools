@@ -14,7 +14,11 @@ These have the same functionality as the MySQL 4 patches. There are several patc
      * use atomic memory instructions for the InnoDB mutex and rw-mutex. This is only done for x86 platforms that use a recent (>= 4.1) version of GCC.
      * disable the InnoDB memory heap. Thisi s done for all platforms.
 
-SmpPerformance has results for a variety of MySQL versions on 4, 8 and 16 core servers.
+SmpPerformance has results for a variety of MySQL versions on 4, 8 and 16 core servers. 
+
+= Feedback, Problems and Comments =
+
+Use the [http://groups.google.com/group/google-mysql-tools google-mysql-tools group]
 
 = Disclaimer =
 
