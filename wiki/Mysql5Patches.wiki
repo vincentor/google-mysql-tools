@@ -10,7 +10,9 @@ These have the same functionality as the MySQL 4 patches. There are several patc
   * the [http://google-mysql-tools.googlecode.com/svn/trunk/mysql-patches/mysql-5.0.37_semisync.patch semi-sync replication V1] patch published in 2007.
   * the [http://code.google.com/p/google-mysql-tools/source/browse/trunk/mysql-patches/mutexstats-5.1.26.patch mutex contention statistics patch] for MySQL 5.1.26
   * the big V2 patch with all of our changes for MySQL 5.0.37
-  * the patch to improve SMP performance for MySQL 5.0.67
+  * the patch to improve SMP performance for MySQL 5.0.67. This has two changes:
+     * use atomic memory instructions for the InnoDB mutex and rw-mutex. This is only done for x86 platforms that use a recent (>= 4.1) version of GCC.
+     * disable the InnoDB memory heap. Thisi s done for all platforms.
 
 SmpPerformance has results for a variety of MySQL versions on 4, 8 and 16 core servers.
 
