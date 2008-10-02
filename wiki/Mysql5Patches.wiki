@@ -14,6 +14,7 @@ These have the same functionality as the MySQL 4 patches. There are several patc
      * use atomic memory instructions for the InnoDB mutex and rw-mutex. This is only done for x86 platforms that use a recent (>= 4.1) version of GCC.
      * disable the InnoDB memory heap. Thisi s done for all platforms.
   * the [http://code.google.com/p/google-mysql-tools/source/browse/trunk/mysql-patches/smp_plugin_1.0.1.patch patch to improve SMP performance] for the InnoDB 1.0.1 plugin in MySQL 5.1
+  * [http://code.google.com/p/google-mysql-tools/source/browse/trunk/mysql-patches/innodb_disallow_writes-5.0.37.patch disable/enable writes to InnoDB files] via _set global innodb_disallow_writes=(0|1)_
 
 SmpPerformance has results for a variety of MySQL versions on 4, 8 and 16 core servers. 
 
