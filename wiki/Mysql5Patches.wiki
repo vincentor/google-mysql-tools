@@ -86,6 +86,7 @@ This has many new features and a few non-features. Embedded MySQL will not work 
    * OnlineDataDrift
    * BatchKeyAccess
    * InnodbMutexContention2
+   * BinlogEventChecksums
 
 = Not yet released =
    * MysqlThreadPool
