@@ -7,7 +7,7 @@ The code has been changed to make MySQL more manageable, available and scalable.
 
 These have the same functionality as the MySQL 4 patches. There are several patch sets:
   * the [http://google-mysql-tools.googlecode.com/svn/trunk/mysql-patches/mysql-5.0.37-patches big V1 patch] published in 2007
-  * the big [http://google-mysql-tools.googlecode.com/svn/trunk/mysql-patches/all.v3-mysql-5.0.37.patch.gz V2 patch] with all of our changes for MySQL 5.0.37
+  * the big [http://google-mysql-tools.googlecode.com/svn/trunk/mysql-patches/all.v2-mysql-5.0.37.patch.gz V2 patch] with all of our changes for MySQL 5.0.37
   * the big [http://google-mysql-tools.googlecode.com/svn/trunk/mysql-patches/all.v3-mysql-5.0.37.patch.gz V3 patch] with all of our changes for MySQL 5.0.37 as of March, 2009
   * the [http://google-mysql-tools.googlecode.com/svn/trunk/mysql-patches/mysql-5.0.37_semisync.patch semi-sync replication V1] patch published in 2007.
   * the [http://code.google.com/p/google-mysql-tools/source/browse/trunk/mysql-patches/mutexstats-5.1.26.patch mutex contention statistics patch] for MySQL 5.1.26
