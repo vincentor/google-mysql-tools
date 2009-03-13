@@ -51,8 +51,9 @@ A lot of people have contributed to this:
   * Steve Gunn
   * Mark Callaghan
 
-= Features in the V2 patch =
+= The V2 patch =
 
+This has many new features and a few non-features. Embedded MySQL will not work with this patch.
    * SqlChanges
    * SemiSyncReplication
    * InnodbSmp
@@ -77,7 +78,10 @@ A lot of people have contributed to this:
    * FastMutexes
    * InnodbFreeze
 
-= Features in the V3 patch =
+= The V3 patch =
+
+This has many new features and a few non-features. Embedded MySQL will not work with this patch. Also, I generated the patch after running 'make distclean' so there are some files that must be regenerated after this patch is applied, including sql_yacc.cc and sql_yacc.h. By doing this, the patch diff is smaller but maybe a bit confusing. Also, I did not update any of the files in libmysqld/ that are copied from sql/.
+
    * GlobalTransactionIds
    * OnlineDataDrift
    * BatchKeyAccess
