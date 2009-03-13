@@ -1,0 +1,7 @@
+#summary Reduce mutex contention on log_sys->mutex and buffer_pool->mutex
+
+= Details =
+
+TODO(mcallaghan) -- more details
+
+Changes were made to reduce contention on log_sys->mutex and buffer_pool->mutex.
