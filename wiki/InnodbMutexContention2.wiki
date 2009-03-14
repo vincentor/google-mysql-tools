@@ -2,7 +2,13 @@
 
 = Details =
 
-TODO(mcallaghan) -- more details on the code changes
+InnoDB was changed to reduce mutex contention on the transaction log and buffer pool mutexes (log_sys->mutex, buffer_pool->mutex). It was also changed to reduce contention between them because on commit a session would lock log_sys->mutex and then lock buffer_pool->mutex. Now it locks log_sys->mutex and then locks buffer_pool->flush_list_mutex.
+
+Changes:
+  * added flush_list mutex to protect buffer_pool->flush list independent of buffer_pool->mutex.
+  * added array of mutexes to protect the hash table of pages (buffer_pool->page_hash) independent of buffer_pool->mutex
+
+= Performance =
 
 Changes were made to reduce contention on log_sys->mutex and buffer_pool->mutex. At high levels of concurrency this improves performance by 20% on sysbench readwrite with a 16-core server.
 
