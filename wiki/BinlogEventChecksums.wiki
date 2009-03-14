@@ -12,4 +12,3 @@ From tests I ran in the past, the use of checksums reduced performance by 10%. F
 || *checksum* || *1 user* || *2 users* || *4 users* || *8 users* || *16 users* || *32 users* || *64 users* ||
 || none || 170 || 379 || 702 || 1113 || 1227 || 1191 || 1103 ||
 || crc32 || 171 || 371 || 688 || 1064 || 1205 || 1153 || 1067 ||
-|| nobinlog ||  173 || 379 || 696 || 1105 || 1233 || 1174 || 1095 ||
