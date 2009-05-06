@@ -3,7 +3,7 @@
 
 = Introduction =
 
-The code has been changed to make MySQL more manageable, available and scalable. Many problems remain to be solved to improve SMP performance. This is a good start.
+The code has been changed to make MySQL more manageable, available and scalable. Many problems remain to be solved to improve SMP performance. This is a good start. The v3 patch and all future patches will be published with a BSD license which applies to code we have added and changed. Original MySQL sources has a GPL license.
 
 These have the same functionality as the MySQL 4 patches. There are several patch sets:
   * the [http://google-mysql-tools.googlecode.com/svn/trunk/mysql-patches/mysql-5.0.37-patches big V1 patch] published in 2007
