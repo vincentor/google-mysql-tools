@@ -1,6 +1,6 @@
 #summary In-memory OLTP performance
 
-This compares performance for tpcc-mysql with a data set that fits in the InnoDB buffer cache. The builds tested are the v4 Google patch (v4-5037), XtraDB with MySQL 5.1.34 (xtradb-5134) and unmodified MySQL 5.0.75 (mysql-5075).
+This compares performance for tpcc-mysql with a data set that fits in the InnoDB buffer cache.
 
 The test configuration is:
   * 20 warehouses
@@ -11,6 +11,11 @@ The test configuration is:
   * 8-core server, 10 disks, SW RAID 0, 1MB stripe, ext2
 
 Tests were done with innodb_max_dirty_pages_pct set to 20 and 80. Only the v4 Google patch was able to come close to enforcing that limit. That is why XtraDB was faster at innodb_max_dirty_pages_pct=20.
+
+Binaries tested:
+  * v4-5037 -- v4 Google patch for MySQL 5.0.37
+  * [http://www.percona.com/percona-lab.html xtradb-5134] -- XtraDB for MySQL 5.1.34
+  * mysql-5075 -- unmodified MySQL 5.0.75
 
 == Results with innodb_max_dirty_pages_pct=20 ==
 
