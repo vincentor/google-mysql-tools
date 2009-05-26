@@ -6,6 +6,7 @@ The test configuration is:
   * 20 warehouses
   * 8G buffer cache
   * 1200 second warmup
+  * 8, 16 and 32 concurrent users
   * 14400 second runtime
   * 8-core server, 10 disks, SW RAID 0, 1MB stripe, ext2
 
