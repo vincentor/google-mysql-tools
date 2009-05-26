@@ -4,11 +4,10 @@ This compares performance for tpcc-mysql with a data set that does not fit in th
 
 The test configuration is:
   * 100 warehouses
-  * 2G buffer cache
   * 16, 32 and 48 concurrent users
   * 1200 second warmup
   * 14400 second runtime
-  * 8-core server, 10 disks, SW RAID 0, 1MB stripe, ext2
+  * 8-core server, 10 disks, SW RAID 0, 1MB stripe, ext2, 16G RAM
 
 Tests were done with innodb_max_dirty_pages_pct set to 20 and 80. Only the v4 Google patch was able to come close to enforcing that limit.
 
@@ -33,3 +32,57 @@ Results for the v4 Google patch and Xtradb with innodb_max_dirty_pages_pct=80.
 || v4-5037 || 3857 || 4097 || 4168 ||
 || xtradb-5134 || 3078 || 2131 || 1888 ||
 || mysql-5075 || 3421 || 3548 || 3543 ||
+
+== Configuration ==
+
+for v4-5037
+{{{
+innodb_buffer_pool_size=2G
+innodb_log_file_size=1900M
+innodb_flush_log_at_trx_commit=2
+innodb_flush_method=O_DIRECT
+innodb_io_capacity=1000
+innodb_read_io_threads=4
+innodb_write_io_threads=4
+innodb_max_dirty_pages_pct=20 or 80
+innodb_ibuf_max_pct_of_buffer=10
+innodb_doublewrite=0
+innodb_ibuf_flush_pct=40
+skip_innodb_ibuf_reads_sync
+innodb_check_max_dirty_foreground
+innodb_adaptive_checkpoint
+innodb_thread_concurrency=0
+innodb_file_per_table
+allow_view_trigger_sp_subquery
+}}}
+
+for xtradb-5134
+{{{
+innodb_log_file_size=1900M
+innodb_buffer_pool_size=2G
+innodb_flush_log_at_trx_commit=2
+innodb_flush_method=O_DIRECT
+innodb_io_capacity=1000
+innodb_use_sys_malloc=0
+innodb_read_io_threads=4
+innodb_write_io_threads=4
+innodb_max_dirty_pages_pct=20 or 80
+innodb_ibuf_max_size=200M
+innodb_ibuf_active_contract=1
+innodb_ibuf_accel_rate=400
+innodb_doublewrite=0
+innodb_file_per_table
+innodb_thread_concurrency=0
+}}}
+
+for mysql-5075
+{{{
+innodb_buffer_pool_size=2G
+innodb_log_file_size=1900M
+innodb_flush_log_at_trx_commit=2
+innodb_flush_method=O_DIRECT
+innodb_max_dirty_pages_pct=80
+innodb_doublewrite=0
+innodb_thread_concurrency=0
+innodb_file_per_table
+}}}
