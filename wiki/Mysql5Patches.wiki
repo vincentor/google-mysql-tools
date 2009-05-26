@@ -53,42 +53,48 @@ A lot of people have contributed to this:
   * Steve Gunn
   * Mark Callaghan
 
-= The V2 patch =
+= The v2 patch =
 
 This has many new features and a few non-features. Embedded MySQL will not work with this patch.
-   * SqlChanges
-   * SemiSyncReplication
-   * InnodbSmp
-   * NewShowStatus
-   * NewShowInnodbStatus
-   * NewConfiguration
-   * UserTableMonitoring
-   * TransactionalReplication
-   * MysqlRoles
-   * MysqlRateLimiting
-   * MoreLogging
-   * InnodbAsyncIo
-   * FastMasterPromotion
-   * MirroredBinlogs
-   * InnodbSampling
-   * NewSqlFunctions
-   * InnodbStatus
-   * LosslessFloatDump
-   * MysqlHttp
-   * InnodbIoTuning
-   * MutexContentionStats
-   * FastMutexes
-   * InnodbFreeze
+  * SqlChanges
+  * SemiSyncReplication
+  * InnodbSmp
+  * NewShowStatus
+  * NewShowInnodbStatus
+  * NewConfiguration
+  * UserTableMonitoring
+  * TransactionalReplication
+  * MysqlRoles
+  * MysqlRateLimiting
+  * MoreLogging
+  * InnodbAsyncIo
+  * FastMasterPromotion
+  * MirroredBinlogs
+  * InnodbSampling
+  * NewSqlFunctions
+  * InnodbStatus
+  * LosslessFloatDump
+  * MysqlHttp
+  * InnodbIoTuning
+  * MutexContentionStats
+  * FastMutexes
+  * InnodbFreeze
 
-= The V3 patch =
+= The v3 patch =
 
 This has many new features and a few non-features. Embedded MySQL will not work with this patch. Also, I generated the patch after running 'make distclean' so there are some files that must be regenerated after this patch is applied, including sql_yacc.cc and sql_yacc.h. By doing this, the patch diff is smaller but maybe a bit confusing. Also, I did not update any of the files in libmysqld/ that are copied from sql/.
 
-   * GlobalTransactionIds
-   * OnlineDataDrift
-   * BatchKeyAccess
-   * InnodbMutexContention2
-   * BinlogEventChecksums
+  * GlobalTransactionIds
+  * OnlineDataDrift
+  * BatchKeyAccess
+  * InnodbMutexContention2
+  * BinlogEventChecksums
+
+= The v4 patch =
+
+This makes InnoDB much faster on IO bound workloads and fixes bugs in new features.
+
+  * InnodbIoPerformance
 
 = Not yet released =
    * MysqlThreadPool
