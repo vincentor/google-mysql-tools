@@ -1,0 +1,24 @@
+#summary Insert Benchmark Performance
+
+These run the [http://www.tokutek.com/benchmark.php insert benchmark] from Tokutek and measure the time to insert 50m rows into a table that starts with 50m rows. Four sessions continuously run queries concurrent with the inserts for the duration of the test.
+
+The results list:
+  * average rows inserted per second for the duration of the test
+  * number of seconds to run the test
+
+== Results for innodb_max_dirty_pages_pct=20 ==
+
+  * TODO -- describe whether %dirty was enforced
+
+|| *Binary* || *Inserts per second* || *Time* ||
+|| v4-5037 || 1022 || 48928 ||
+|| xtradb-5134 || 982 || 50905 ||
+
+== Results for innodb_max_dirty_pages_pct=80 ==
+
+  * TODO -- describe whether %dirty was enforced
+
+|| *Binary* || *Inserts per second* || *Time* ||
+|| v4-5037 || 1615 || 30959 ||
+|| xtradb-5134 || 786 || 63598 ||
+|| mysql-5075 || 305 || 164049 ||
