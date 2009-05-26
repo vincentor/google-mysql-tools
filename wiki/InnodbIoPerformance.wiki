@@ -10,7 +10,7 @@ This describes work to make InnoDB faster on IO bound workloads. The goal is to 
   * better at balancing different IO tasks
   * easier to monitor
 
-One day, Heikki will write the _Complete Guide to InnoDB_, until then you need to consult multiple sources to understand the internals. It also helps to read the source code.
+One day, Heikki will write the _Complete Guide to InnoDB_, until then you need to consult multiple sources to understand the internals. It also helps to read the source code. These may help you to understand it:
   * [http://docs.google.com/Presentation?id=dhngrkwh_7fn256bdj slides] from the Percona Performance Conference
   * [http://dev.mysql.com/doc/refman/5.0/en/innodb-insert-buffering.html insert buffer in the MySQL manual]
   * blog post on [http://mysqlha.blogspot.com/2008/07/how-do-you-know-when-innodb-gets-behind.html IO lag]
