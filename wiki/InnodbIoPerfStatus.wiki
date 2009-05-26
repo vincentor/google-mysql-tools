@@ -50,7 +50,7 @@ I/O thread 6 state: waiting for i/o request (write thread) reads 0 writes 391586
 
 == File IO statistics ==
 
-This includes statistics per file. It is much more useful when InnoDB is run with _innodb_file_per_table_. There are separate sections for reads and writes per file:
+This includes statistics per file. It is much more useful when InnoDB is run with _innodb_file_per_table_. The first two columns are the tablespace name and tablespace ID. There are separate sections for reads and writes per file:
   * pages - number of pages read or written
   * requests - number of pwrite/pread system calls. There may be fewer of these than reads and writes because of request merging.
   * msecs/r - average number of milliseconds per *request*
@@ -70,4 +70,58 @@ File IO statistics
   ./test/item.ibd 16 -- read: 2892 requests, 3033 pages, 51.96 secs, 17.97 msecs/r, write: 0 requests, 0 pages, 0.00 secs, 0.00 msecs/r
   ./ib_logfile0 4294967280 -- read: 6 requests, 9 pages, 0.00 secs, 0.02 msecs/r, write: 314701 requests, 316680 pages, 6.73 secs, 0.02 msecs/r
 }}}
+
+== Insert Buffer Statistics ==
+
+New output includes:
+  * Ibuf read pages - number of requested and actual prefetch reads done to merge insert buffer records. InnoDB chooses entries to merge at random. If the number requested is much higher than the actual number, then the random algorithm is inefficient.
+  * Ibuf merge - rate at which work is done for the insert buffer
+
+{{{
+INSERT BUFFER AND ADAPTIVE HASH INDEX
+-------------------------------------
+Ibuf: size 3776, free list len 1895, seg size 5672,
+984975 inserts, 454561 merged recs, 58782 merges
+Ibuf read pages: 32960 requested, 36280 actual
+Ibuf merge: 1229.9 requested_io/s, 39269.4 records_in/s, 19639.5 records_out/s, 2210.6 page_reads/s
+}}}
+
+== Log Statistics ==
+
+This includes:
+  * Foreground (Background) page flushes - page flushes done synchronously (asynchronously) by user sessions to maintain a small number of clean buffer pool pages. 
+
+{{{
+LOG
+---
+Foreground page flushes:  sync 0 async 0
+Background adaptive page flushes: 0
+Foreground flush margins: sync 3025130459 async 2823455095
+Space to flush margin:     sync 3000381113 async 2798705749
+Current_LSN - Min_LSN     24749346
+Checkpoint age            25858470
+Max checkpoint age        3226805822
+}}}
+
+== Buffer Pool Statistics ==
+
+This includes:
+  * LRU_old pages - number of *old* pages on the LRU list
+  * Total writes - sources of pages for dirty page writes
+  * Write sources - callers from which dirty page write requests are submitted
+  * Foreground flushed dirty - number of dirty page writes submitted from a user session because the main background IO thread was too slow
+  * Read ahead - number of prefetch read requests submitted because random or sequential access to an extent was detected
+  * Pct_dirty - percent of pages in the buffer pool that are dirty
+
+{{{
+BUFFER POOL AND MEMORY
+----------------------
+LRU_old pages      48109
+Total writes: LRU 23271, flush list 1491363, single page 0
+Write sources: free margin 23271, bg dirty 552374, bg lsn 0, bg extra 2742, recv 0, preflush 0
+Foreground flushed dirty 935903
+Read ahead: 44312 random, 355282 sequential
+Pct_dirty 25.83
+}}}
+
 = SHOW STATUS =
