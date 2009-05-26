@@ -8,6 +8,7 @@ The test configuration is:
 The results list:
   * average rows inserted per second for the duration of the test
   * number of seconds to run the test
+  * average value for the percent of dirty buffer pool pages
 
 Binaries tested:
   * v4-5037 -- v4 Google patch for MySQL 5.0.37
@@ -16,20 +17,21 @@ Binaries tested:
 
 == Results for innodb_max_dirty_pages_pct=20 ==
 
-  * TODO -- describe whether %dirty was enforced
+Notes:
+  * v4-5037 was better at enforcing innodb_max_dirty_pages_pct
 
-|| *Binary* || *Inserts per second* || *Time* ||
-|| v4-5037 || 1022 || 48928 ||
-|| xtradb-5134 || 982 || 50905 ||
+|| *Binary* || *Inserts per second* || *Time* || *Avg pct dirty* ||
+|| v4-5037 || 1022 || 48928 || 24% ||
+|| xtradb-5134 || 982 || 50905 || 29% ||
 
 == Results for innodb_max_dirty_pages_pct=80 ==
 
-  * TODO -- describe whether %dirty was enforced
+  * xtradb-5134 did not let the dirty page count get as large as allowed. This may explain why v4-5037 was much faster.
 
-|| *Binary* || *Inserts per second* || *Time* ||
-|| v4-5037 || 1615 || 30959 ||
-|| xtradb-5134 || 786 || 63598 ||
-|| mysql-5075 || 305 || 164049 ||
+|| *Binary* || *Inserts per second* || *Time* || *Avg pct dirty* ||
+|| v4-5037 || 1615 || 30959 || 53% ||
+|| xtradb-5134 || 786 || 63598 || 31% ||
+|| mysql-5075 || 305 || 164049 || ?? ||
 
 == Configuration ==
 
