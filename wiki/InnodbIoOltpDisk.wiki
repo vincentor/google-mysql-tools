@@ -16,22 +16,30 @@ Binaries tested:
   * [http://www.percona.com/percona-lab.html xtradb-5134] -- XtraDB for MySQL 5.1.34
   * mysql-5075 -- unmodified MySQL 5.0.75
 
+The results list:
+  * binary used
+  * Throughput in TpmC
+  * Average value for percent dirty buffer pool pages
+
 == Results with innodb_max_dirty_pages_pct=20 ==
 
+Notes:
+  * xtradb-5134 did not enforce innodb_max_dirty_pages_pct
+
 Results for the v4 Google patch and Xtradb with innodb_max_dirty_pages_pct=20.
-|| *Binary* || *TpmC @ 16 users* || *TpmC @ 32 users* || *TpmC @ 48 users* ||
-|| v4-5037 || 3386 || 3496 || 3516 ||
-|| xtradb-5134 || 2727 || 2900 || 2883 ||
+|| *Binary* || *TpmC @ 16 users* || *TpmC @ 32 users* || *TpmC @ 48 users* || *Avg pct dirty* ||
+|| v4-5037 || 3386 || 3496 || 3516 || 26% ||
+|| xtradb-5134 || 2727 || 2900 || 2883 || 45% ||
 
 == Results with innodb_max_dirty_pages_pct=80 ==
 
 Results for the v4 Google patch and Xtradb with innodb_max_dirty_pages_pct=80.
   * With XtraDB, performance gets worse at 80% dirty than at 20%. A similar result occurs for the insert benchmark. I don't understand why (yet).
 			
-|| *Binary* || *TpmC @ 16 users* || *TpmC @ 32 users* || *TpmC @ 48 users* ||
-|| v4-5037 || 3857 || 4097 || 4168 ||
-|| xtradb-5134 || 3078 || 2131 || 1888 ||
-|| mysql-5075 || 3421 || 3548 || 3543 ||
+|| *Binary* || *TpmC @ 16 users* || *TpmC @ 32 users* || *TpmC @ 48 users* || *Avg pct dirty* ||
+|| v4-5037 || 3857 || 4097 || 4168 || 55% ||
+|| xtradb-5134 || 3078 || 2131 || 1888 || 63% ||
+|| mysql-5075 || 3421 || 3548 || 3543 || 56% ||
 
 == Configuration ==
 
