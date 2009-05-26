@@ -2,7 +2,7 @@
 
 = Introduction =
 
-*NOTE* -- this is incomplete until I add performance results
+It is one thing to publish performance results. It is another to understand them. The results here need more analysis and the code needs to be tested by others in the community.
 
 This describes work to make InnoDB faster on IO bound workloads. The goal is to make it easy to use InnoDB on a server that can do 1000 to 10000 IOPs. A lot of problems must be fixed for that to be possible, but this is a big step towards that goal. These changes improve performance by 20% to more than 400% on several benchmarks. At a high level, these changes make InnoDB:
   * more efficient when processing IO requests
@@ -31,6 +31,6 @@ One day, Heikki will write the _Complete Guide to InnoDB_, until then you need t
 
 = Performance =
 
-  * in-memory OLTP
-  * disk-bound OLTP
-  * insert benchmark
+  * [InnodbIoOltpMemory in-memory OLTP]
+  * [InnodbIoOltpDisk disk-bound OLTP]
+  * [InnodbIoInsert insert benchmark]
