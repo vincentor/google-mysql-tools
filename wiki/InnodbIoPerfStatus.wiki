@@ -1,0 +1,73 @@
+#summary More details on InnoDB status
+
+There are more details on InnoDB status in the output from _SHOW INNODB STATUS_ and _SHOW STATUS_.
+
+= SHOW INNODB STATUS =
+
+New details include:
+  * frequency at which the main background IO thread runs
+  * IO latency for each background IO thread
+  * per-file IO statistics
+  * insert buffer prefetch reads
+  * statistics on checkpoint related IO
+  * statistics on prefetches
+  * statistics on sources of background IO
+
+== Main background IO thread ==
+
+This includes:
+  * srv_master_thread loops - number of iterations of the main background loop including the tasks per second (1_second) and the tasks per 10 seconds (10_second).
+  * Seconds in background IO thread: number of seconds performing different background IO tasks
+
+{{{
+BACKGROUND THREAD
+----------
+srv_master_thread loops: 1623 1_second, 1623 sleeps, 162 10_second, 1 background, 1 flush
+srv_master_thread log flush: 1785 sync, 1 async
+srv_wait_thread_mics 0 microseconds, 0.0 seconds
+spinlock delay for 5 delay 20 rounds is 2 mics
+Seconds in background IO thread: 5.10 insert buffer, 49.02 buffer pool, 0.00 adaptive checkpoint, 52.34 purge
+fsync callers: 0 buffer pool, 189 other, 1323 checkpoint, 263 log aio, 5179 log sync, 0 archive
+}}}
+
+== Background IO thread statistics ==
+
+This includes:
+  * reads, writes - number of pages read and written
+  * requests - number of pwrite/pread system calls. There may be fewer of these than reads and writes because of request merging.
+  * msecs/r - average number of milliseconds per *request*. For the *io:* section this is the time for the pwrite/pread system call. For the *svc:* section this is the time from when the page is submitted to the background thread until it is completed.
+  * secs - total seconds for all pread/pwrite calls
+  * old - number of pages for which the service time is greater than 2 seconds
+
+{{{
+FILE I/O
+--------
+I/O thread 0 state: waiting for i/o request (insert buffer thread) reads 2177 writes 0 io: requests 125 secs 2.99 msecs/r 23.90 max msecs 82.07 svc: 106.58 msecs/r 48.96 max msecs 128.76 old 0
+I/O thread 1 state: waiting for i/o request (log thread) reads 0 writes 263 io: requests 263 secs 0.13 msecs/r 0.49 max msecs 30.43 svc: secs 0.14 msecs/r 0.54 max msecs 30.48 old 0
+I/O thread 2 state: doing file i/o (read thread) reads 116513 writes 0 io: requests 35777 secs 564.96 msecs/r 15.79 max msecs 251.04 svc: secs 7643.21 msecs/r 65.60 max msecs 2492.18 old 111 ev set
+I/O thread 6 state: waiting for i/o request (write thread) reads 0 writes 391586 io: requests 256597 secs 1169.16 msecs/r 4.56 max msecs 336.70 svc: secs 104498.79 msecs/r 266.86 max msecs 3001.04 old 169
+}}}
+
+== File IO statistics ==
+
+This includes statistics per file. It is much more useful when InnoDB is run with _innodb_file_per_table_. There are separate sections for reads and writes per file:
+  * pages - number of pages read or written
+  * requests - number of pwrite/pread system calls. There may be fewer of these than reads and writes because of request merging.
+  * msecs/r - average number of milliseconds per *request*
+  * secs - total seconds for all pread/pwrite calls
+
+{{{
+File IO statistics
+  ./test/warehouse.ibd 10 -- read: 3 requests, 3 pages, 0.01 secs, 4.36 msecs/r, write: 30 requests, 30 pages, 0.11 secs, 3.70 msecs/r
+  ./ibdata1 0 -- read: 1123 requests, 3349 pages, 22.97 secs, 20.46 msecs/r, write: 2662 requests, 86526 pages, 32.86 secs, 12.34 msecs/r
+  ./test/orders.ibd 29 -- read: 26301 requests, 28759 pages, 450.63 secs, 17.13 msecs/r, write: 82089 requests, 101564 pages, 425.44 secs, 5.18 msecs/r
+  ./test/customer.ibd 28 -- read: 333186 requests, 338048 pages, 5955.39 secs, 17.87 msecs/r, write: 185378 requests, 200494 pages, 883.61 secs, 4.77 msecs/r
+  ./test/stock.ibd 27 -- read: 902675 requests, 1179864 pages, 16036.91 secs, 17.77 msecs/r, write: 577970 requests, 790063 pages, 2473.27 secs, 4.28 msecs/r
+  ./test/order_line.ibd 25 -- read: 74232 requests, 92644 pages, 1217.65 secs, 16.40 msecs/r, write: 141432 requests, 274155 pages, 643.97 secs, 4.55 msecs/r
+  ./test/new_orders.ibd 22 -- read: 4642 requests, 4960 pages, 81.02 secs, 17.45 msecs/r, write: 11482 requests, 60368 pages, 103.86 secs, 9.05 msecs/r
+  ./test/history.ibd 21 -- read: 8006 requests, 11323 pages, 123.86 secs, 15.47 msecs/r, write: 24640 requests, 52809 pages, 119.01 secs, 4.83 msecs/r
+  ./test/district.ibd 18 -- read: 14 requests, 14 pages, 0.14 secs, 10.35 msecs/r, write: 39 requests, 249 pages, 0.43 secs, 10.96 msecs/r
+  ./test/item.ibd 16 -- read: 2892 requests, 3033 pages, 51.96 secs, 17.97 msecs/r, write: 0 requests, 0 pages, 0.00 secs, 0.00 msecs/r
+  ./ib_logfile0 4294967280 -- read: 6 requests, 9 pages, 0.00 secs, 0.02 msecs/r, write: 314701 requests, 316680 pages, 6.73 secs, 0.02 msecs/r
+}}}
+= SHOW STATUS =
