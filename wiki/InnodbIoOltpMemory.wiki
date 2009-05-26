@@ -13,7 +13,16 @@ The test configuration is:
 Tests were done with innodb_max_dirty_pages_pct set to 20 and 80. Only the v4 Google patch was able to come close to enforcing that limit. That is why XtraDB was faster at innodb_max_dirty_pages_pct=20.
 
 Results for the v4 Google patch and Xtradb with innodb_max_dirty_pages_pct=20.
-http://google-mysql-tools.googlecode.com/files/oltp_performance_20_warehouses_dirty_20.png
+  * TODO
 
+|| *Binary* || *TpmC @ 8 users* || *TpmC @ 16 users* || *TpmC @ 32 users* ||
+|| v4-5037 || 24433 || 28560 || 28464 ||
+|| xtradb-5134 || 24422 || 32231 || 33235 ||
+			
 Results for the v4 Google patch and Xtradb with innodb_max_dirty_pages_pct=80.
-http://google-mysql-tools.googlecode.com/files/oltp_performance_20_warehouses_dirty_80.png
+  * TODO
+
+|| *Binary* || *TpmC @ 8 users* || *TpmC @ 16 users* || *TpmC @ 32 users* ||
+|| v4-5037 || 27701 || 36674 || 36053 ||
+|| xtradb-5134 || 24748 || 32798 || 33618 ||
+|| mysql-5075 || 26274 || 32847 || 29632 ||
