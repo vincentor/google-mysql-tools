@@ -1,0 +1,36 @@
+#summary Make Innodb faster for IO bound workloads
+
+= Introduction =
+
+*NOTE* -- this is incomplete
+
+This describes work to make InnoDB faster on IO bound workloads. The goal is to make it easy to use InnoDB on a server that can do 1000 to 10000 IOPs. A lot of problems must be fixed for that to be possible, but this is a big step towards that goal. These changes improve performance by 20% to more than 400% on several benchmarks. At a high level, these changes make InnoDB:
+  * more efficient when processing IO requests
+  * more likely to use available IO capacity
+  * better at balancing different IO tasks
+  * easier to monitor
+
+One day, Heikki will write the _Complete Guide to InnoDB_, until then you need to consult multiple sources to understand the internals. It also helps to read the source code.
+  * [http://docs.google.com/Presentation?id=dhngrkwh_7fn256bdj slides] from the Percona Performance Conference
+  * [http://dev.mysql.com/doc/refman/5.0/en/innodb-insert-buffering.html insert buffer in the MySQL manual]
+  * blog post on [http://mysqlha.blogspot.com/2008/07/how-do-you-know-when-innodb-gets-behind.html IO lag]
+  * [http://mysqlha.blogspot.com/2008/12/other-performance-problem.html another blog post on InnoDB IO performance]
+  * [http://mysqlha.blogspot.com/2008/10/innodb-background-io.html details on new my.cnf parameters for InnoDB IO performance]
+  * [http://mysqlha.blogspot.com/2008/10/more-background-io-threads-for-innodb.html notes on my.cnf parameters for more background IO threads]
+
+= Features =
+
+  * [InnodbIoPerfStatus displays more data] in SHOW INNODB STATUS and SHOW STATUS including per-file IO statistics
+  * [InnodbIoPerfCpu uses less CPU] while processing background IO requests
+  * [InnodbIoPerfMaxDirty enforces innodb_max_dirty_pages_pct]
+  * [InnodbIoPerfConfig adds my.cnf variable] to set the maximum size of the insert buffer
+  * [InnodbIoPerfDelay prevents the insert buffer] from getting full (and becoming useless)
+  * [InnodbIoPerfMain changes the main background IO thread] to be simpler and use more asynchronous IO
+  * [InnodbIoPerfDelay delays user sessions] when limits are reached on the number of dirty buffer pool pages or the size of the insert buffer
+  * [InnodbIoPerfConfig adds many my.cnf variables]
+
+= Performance =
+
+  * in-memory OLTP
+  * disk-bound OLTP
+  * insert benchmark
