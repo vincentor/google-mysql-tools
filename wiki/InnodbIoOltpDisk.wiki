@@ -12,8 +12,19 @@ The test configuration is:
 
 Tests were done with innodb_max_dirty_pages_pct set to 20 and 80. Only the v4 Google patch was able to come close to enforcing that limit.
 
+== Results with innodb_max_dirty_pages_pct=20 ==
+
 Results for the v4 Google patch and Xtradb with innodb_max_dirty_pages_pct=20.
-http://google-mysql-tools.googlecode.com/files/oltp_performance_100_warehouses_dirty_pages_pct_20.png
+|| *Binary* || *TpmC @ 16 users* || *TpmC @ 32 users* || *TpmC @ 48 users* ||
+|| v4-5037 || 3386 || 3496 || 3516 ||
+|| xtradb-5134 || 2727 || 2900 || 2883 ||
+
+== Results with innodb_max_dirty_pages_pct=80 ==
 
 Results for the v4 Google patch and Xtradb with innodb_max_dirty_pages_pct=80.
-http://google-mysql-tools.googlecode.com/files/oltp_performance_100_warehouses_dirty_pages_pct_80.png
+  * With XtraDB, performance gets worse at 80% dirty than at 20%. A similar result occurs for the insert benchmark. I don't understand why (yet).
+			
+|| *Binary* || *TpmC @ 16 users* || *TpmC @ 32 users* || *TpmC @ 48 users* ||
+|| v4-5037 || 3857 || 4097 || 4168 ||
+|| xtradb-5134 || 3078 || 2131 || 1888 ||
+|| mysql-5075 || 3421 || 3548 || 3543 ||
