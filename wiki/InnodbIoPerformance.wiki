@@ -25,7 +25,6 @@ One day, Heikki will write the _Complete Guide to InnoDB_, until then you need t
   * [InnodbIoPerfMaxDirty enforces innodb_max_dirty_pages_pct]
   * [InnodbIoPerfDelay prevents the insert buffer] from getting full (and becoming useless)
   * [InnodbIoPerfMain changes the main background IO thread] to be simpler and use more asynchronous IO
-  * [InnodbIoPerfDelay delays user sessions] when limits are reached on the number of dirty buffer pool pages or the size of the insert buffer
   * [InnodbIoPerfConfig adds many my.cnf variables]
 
 = Performance =
