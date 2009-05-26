@@ -5,3 +5,5 @@ InnoDB starts a thread to perform background IO operations. This has operations 
 It is hard to understand the behavior of this loop because the sleep is optional dependent on the amount of work done on the previous iteration of the loop. And there are costs from this complexity. For example, one of the 1 second tasks is to flush the transaction log to disk to match the expected behavior from _innodb_flush_log_at_trx_commit=2_. However, when the 1 second loop runs much more frequently than once per second there will be many more fsync calls then expected.
 
 In the v4 patch, the sleep is not optional. Other changes to the main background IO thread make it possible for each loop iteration to do enough work that there is no need to skip the sleep.
+
+In the v4 patch all of the code that submits a large number of async IO requests makes sure that the number of requests does not exceed the number of free slots in the array. Otherwise, the async IO requests block until there are free slots.
