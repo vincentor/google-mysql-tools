@@ -6,6 +6,11 @@ The results list:
   * average rows inserted per second for the duration of the test
   * number of seconds to run the test
 
+Binaries tested:
+  * v4-5037 -- v4 Google patch for MySQL 5.0.37
+  * [http://www.percona.com/percona-lab.html xtradb-5134] -- XtraDB for MySQL 5.1.34
+  * mysql-5075 -- unmodified MySQL 5.0.75
+
 == Results for innodb_max_dirty_pages_pct=20 ==
 
   * TODO -- describe whether %dirty was enforced
