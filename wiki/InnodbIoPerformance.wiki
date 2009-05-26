@@ -23,7 +23,6 @@ One day, Heikki will write the _Complete Guide to InnoDB_, until then you need t
   * [InnodbIoPerfStatus displays more data] in SHOW INNODB STATUS and SHOW STATUS including per-file IO statistics
   * [InnodbIoPerfCpu uses less CPU] while processing background IO requests
   * [InnodbIoPerfMaxDirty enforces innodb_max_dirty_pages_pct]
-  * [InnodbIoPerfConfig adds my.cnf variable] to set the maximum size of the insert buffer
   * [InnodbIoPerfDelay prevents the insert buffer] from getting full (and becoming useless)
   * [InnodbIoPerfMain changes the main background IO thread] to be simpler and use more asynchronous IO
   * [InnodbIoPerfDelay delays user sessions] when limits are reached on the number of dirty buffer pool pages or the size of the insert buffer
