@@ -26,6 +26,7 @@ One day, Heikki will write the _Complete Guide to InnoDB_, until then you need t
   * [InnodbIoIbuf prevents the insert buffer] from getting full (and becoming useless)
   * [InnodbIoPerfMain changes the main background IO thread] to be simpler and use more asynchronous IO
   * [InnodbIoPerfConfig adds many my.cnf variables]
+  * Reimplements [InnodbIoAdaptiveCheckpoint adaptive checkpoints] as first described by Percona
 
 = Performance =
 
