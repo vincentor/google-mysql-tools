@@ -39,12 +39,14 @@ This provides more performance data:
   * Reads/s, Writes/s - average disk reads/writes per second from iostat
   * QPS - queries per second from the query sessions
   * CPU% - user + sys time from vmstat
+  * Idle% - idle time from vmstat
+  * Wait% - wait time from vmstat
 
-|| *Binary* || *Pct dirty* || *Reads/s* || *Writes/s* || *QPS* || *CPU%* ||
-|| xtradb-5134 || 20% || 581 || 353 || 43 || 8.6% ||
-|| v4-5037 || 20% || 526 || 452 || 43 || 9.2% ||
-|| xtradb-5134 || 80% || 684 || 190 || 50 || 7.9% ||
-|| v4-5037 || 80% || 597 || 328 || 43 || 10.3% ||
+|| *Binary* || *Pct dirty* || *Reads/s* || *Writes/s* || *QPS* || *CPU%* || *Idle%* || *Wait%* ||
+|| xtradb-5134 || 20% || 581 || 353 || 43 || 8.6% || 47.0% || 45.0% ||
+|| v4-5037 || 20% || 526 || 452 || 43 || 9.2% || 48.0% || 43.0% ||
+|| xtradb-5134 || 80% || 684 || 190 || 50 || 7.9% || 43.3% || 48.3% ||
+|| v4-5037 || 80% || 597 || 328 || 43 || 10.3% || 43.8% || 46.0% ||
 
 == Configuration ==
 
