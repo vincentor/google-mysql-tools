@@ -9,7 +9,7 @@ These have the same functionality as the MySQL 4 patches. There are several patc
   * the [http://google-mysql-tools.googlecode.com/svn/trunk/mysql-patches/mysql-5.0.37-patches v1 patch] published in 2007
   * the [http://google-mysql-tools.googlecode.com/svn/trunk/mysql-patches/all.v2-mysql-5.0.37.patch.gz v2 patch] with all of our changes for MySQL 5.0.37
   * the [http://google-mysql-tools.googlecode.com/svn/trunk/mysql-patches/all.v3-mysql-5.0.37.patch.gz v3 patch] with all of our changes for MySQL 5.0.37 as of May 6, 2009. This adds global transaction IDs, row-change logging and more InnoDB SMP performance fixes.
-  * the v4 patch to be published in June, 2009. This makes InnoDB faster on IO bound loads.
+  * the [http://google-mysql-tools.googlecode.com/svn/trunk/mysql-patches/all.v3-mysql-5.0.37.patch.gz v4 patch] as of May 26, 2009. [InnodbIoPerformance This makes InnoDB faster] on IO bound loads.
   * the [http://google-mysql-tools.googlecode.com/svn/trunk/mysql-patches/mysql-5.0.37_semisync.patch semi-sync replication V1] patch published in 2007.
   * the [http://code.google.com/p/google-mysql-tools/source/browse/trunk/mysql-patches/mutexstats-5.1.26.patch mutex contention statistics patch] for MySQL 5.1.26
   * the [http://code.google.com/p/google-mysql-tools/source/browse/trunk/mysql-patches/smp-5.0.67.patch patch to improve SMP performance] for MySQL 5.0.67. This has two changes:
