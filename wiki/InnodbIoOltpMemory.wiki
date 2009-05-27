@@ -51,7 +51,7 @@ Notes:
   * Given that Idle is high for v4-5037 with pct_dirty=80% there might be too much mutex contention
 
 || *Binary* || *Pct dirty* || *Reads/s* || *Writes/s* || *CPU%* || *Idle* || *Wait* ||
-|| xtradb-5134 || 20% || 20 || 212 || 93.8% || 5.2% | 1.2% ||
+|| xtradb-5134 || 20% || 20 || 212 || 93.8% || 5.2% || 1.2% ||
 || v4-5037 || 20% || 13 || 312 || 83.8% || 14.2% || 2.0% ||
 || xtradb-5134 || 80% || 19 || 128 || 94.3% || 4.9% || 0.7% ||
 || v4-5037 || 80% || 14 || 110 || 93.8% || 5.5% || 0.7% ||
