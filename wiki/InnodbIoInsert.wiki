@@ -8,7 +8,7 @@ The test configuration is:
 The results list:
   * average rows inserted per second for the duration of the test
   * number of seconds to run the test
-  * average value for the percent of dirty buffer pool pages
+  * average value for the percent of dirty buffer pool pages. This is computed using the static size of the buffer pool. It does not account for the usage of buffer pool pages for the insert buffer and elsewhere. Even if I wanted to include that, I cannot because only the Google patch has the insert buffer size in SHOW STATUS output.
 
 Binaries tested:
   * v4-5037 -- v4 Google patch for MySQL 5.0.37
@@ -18,7 +18,7 @@ Binaries tested:
 == Results for innodb_max_dirty_pages_pct=20 ==
 
 Notes:
-  * v4-5037 was better at enforcing innodb_max_dirty_pages_pct
+  * v4-5037 was better at enforcing innodb_max_dirty_pages_pct, but this may be explained by the notes above.
 
 || *Binary* || *Inserts per second* || *Time* || *Avg pct dirty* ||
 || v4-5037 || 1022 || 48928 || 24% ||
@@ -26,7 +26,7 @@ Notes:
 
 == Results for innodb_max_dirty_pages_pct=80 ==
 
-  * xtradb-5134 did not let the dirty page count get as large as allowed. This may explain why v4-5037 was much faster.
+  * xtradb-5134 may have been slower because it did not allow as many pages to be dirty. Given that the size of the insert buffer was limited to 200MB, the explanation should not be that 50% of the buffer pool pages were used for the insert buffer. But I don't have SHOW INNODB STATUS output from the test and XtraDB does not list insert buffer size in SHOW STATUS output, so the real answer must wait.
 
 || *Binary* || *Inserts per second* || *Time* || *Avg pct dirty* ||
 || v4-5037 || 1615 || 30959 || 53% ||
