@@ -46,13 +46,15 @@ Notes:
 This provides more performance data for the test with 48 concurrent users:
   * Reads/s, Writes/s - average disk reads/writes per second from iostat
   * CPU% - user + sys time from vmstat
+  * Idle% - idle time from vmstat
+  * Wait% - wait time from vmstat
 
-|| *Binary* || *Pct dirty* || *Reads/s* || *Writes/s* || *CPU%* ||
-|| xtradb-5134 || 20% || 678 || 430 || 30.2% ||
-|| v4-5037 || 20% || 731 || 648 || 17.2% ||
-|| xtradb-5134 || 80% || 412 || 201 || 26.8% ||
-|| v4-5037 || 80% || 893 || 490 || 20.8% ||
-|| mysql-5075 || 80% || 797 || 432 || 47.4% ||
+|| *Binary* || *Pct dirty* || *Reads/s* || *Writes/s* || *CPU%* || *Idle%* || *Wait%* ||
+|| xtradb-5134 || 20% || 678 || 430 || 30.2% || 21.8% || 48.1% ||
+|| v4-5037 || 20% || 731 || 648 || 17.2% || 32.6% || 50.2% ||
+|| xtradb-5134 || 80% || 412 || 201 || 26.8% || 43.4% || 30.0% ||
+|| v4-5037 || 80% || 893 || 490 || 20.8% || 25.6% || 53.8% ||
+|| mysql-5075 || 80% || 797 || 432 || 47.4% || 26.5% || 27.5% ||
 
 90% percentile response time in seconds:
 
