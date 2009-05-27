@@ -46,6 +46,11 @@ This provides more performance data for the test with 32 concurrent users:
   * CPU% - user + sys time from vmstat
 
 || *Binary* || *Pct dirty* || *Reads/s* || *Writes/s* || *CPU%* ||
+|| xtradb-5134 || 20% || 20 || 212 || 93.8% ||
+|| v4-5037 || 20% || 13 || 312 || 83.8% ||
+|| xtradb-5134 || 80% || 19 || 128 || 94.3% ||
+|| v4-5037 || 80% || 14 || 110 || 93.8% ||
+|| mysql-5075 || 80% || 13 || 76 || 92.7% ||
 
 
 90% percentile response time in seconds:
