@@ -24,16 +24,16 @@ The results list:
 == Results with innodb_max_dirty_pages_pct=20 ==
 
 Notes:
+  * avg pct dirty is measured at 48 users
   * xtradb-5134 did not enforce innodb_max_dirty_pages_pct. Given the limits on the size of the insert buffer, the notes above do not explain this. I need to run another test and capture SHOW INNODB STATUS output.
 
-Results for the v4 Google patch and Xtradb with innodb_max_dirty_pages_pct=20.
 || *Binary* || *TpmC @ 16 users* || *TpmC @ 32 users* || *TpmC @ 48 users* || *Avg pct dirty* ||
 || v4-5037 || 3386 || 3496 || 3516 || 26% ||
 || xtradb-5134 || 2727 || 2900 || 2883 || 45% ||
 
 == Results with innodb_max_dirty_pages_pct=80 ==
 
-Results for the v4 Google patch and Xtradb with innodb_max_dirty_pages_pct=80.
+  * avg pct dirty is measured at 48 users
   * With XtraDB, performance gets worse at 80% dirty than at 20%. A similar result occurs for the insert benchmark. I don't understand why (yet).
 			
 || *Binary* || *TpmC @ 16 users* || *TpmC @ 32 users* || *TpmC @ 48 users* || *Avg pct dirty* ||
