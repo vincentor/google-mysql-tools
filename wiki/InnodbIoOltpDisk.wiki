@@ -49,6 +49,9 @@ This provides more performance data for the test with 48 concurrent users:
   * Idle% - idle time from vmstat
   * Wait% - wait time from vmstat
 
+Notes:
+  * CPU% is low for pct_dirty=20% and v4-5037 on this test and the 20 warehouse tpcc-mysql result. TODO -- explain that
+
 || *Binary* || *Pct dirty* || *Reads/s* || *Writes/s* || *CPU%* || *Idle%* || *Wait%* ||
 || xtradb-5134 || 20% || 678 || 430 || 30.2% || 21.8% || 48.1% ||
 || v4-5037 || 20% || 731 || 648 || 17.2% || 32.6% || 50.2% ||
