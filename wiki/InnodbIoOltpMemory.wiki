@@ -16,24 +16,28 @@ Binaries tested:
   * [http://www.percona.com/percona-lab.html xtradb-5134] -- XtraDB for MySQL 5.1.34
   * mysql-5075 -- unmodified MySQL 5.0.75
 
+The results list:
+  * binary used
+  * Throughput in TpmC
+  * average value for the percent of dirty buffer pool pages. This is computed using the static size of the buffer pool. It does not account for the usage of buffer pool pages for the insert buffer and elsewhere. Even if I wanted to include that, I cannot because only the Google patch has the insert buffer size in SHOW STATUS output.
+
 == Results with innodb_max_dirty_pages_pct=20 ==
 
-Results for the v4 Google patch and Xtradb with innodb_max_dirty_pages_pct=20.
-  * TODO
+  * avg pct dirty is measured at 32 users
+  * v4-5037 is better at enforcing innodb_max_dirty_pages_pct
 
-|| *Binary* || *TpmC @ 8 users* || *TpmC @ 16 users* || *TpmC @ 32 users* ||
-|| v4-5037 || 24433 || 28560 || 28464 ||
-|| xtradb-5134 || 24422 || 32231 || 33235 ||
+|| *Binary* || *TpmC @ 8 users* || *TpmC @ 16 users* || *TpmC @ 32 users* || *Avg pct dirty* ||
+|| v4-5037 || 24433 || 28560 || 28464 || 24% ||
+|| xtradb-5134 || 24422 || 32231 || 33235 || 28% ||
 
 == Results with innodb_max_dirty_pages_pct=80 ==
 			
-Results for the v4 Google patch and Xtradb with innodb_max_dirty_pages_pct=80.
-  * TODO
+  * avg pct dirty is measured at 32 users
 
-|| *Binary* || *TpmC @ 8 users* || *TpmC @ 16 users* || *TpmC @ 32 users* ||
-|| v4-5037 || 27701 || 36674 || 36053 ||
-|| xtradb-5134 || 24748 || 32798 || 33618 ||
-|| mysql-5075 || 26274 || 32847 || 29632 ||
+|| *Binary* || *TpmC @ 8 users* || *TpmC @ 16 users* || *TpmC @ 32 users* || *Avg pct dirty* ||
+|| v4-5037 || 27701 || 36674 || 36053 || 35% ||
+|| xtradb-5134 || 24748 || 32798 || 33618 || 34% ||
+|| mysql-5075 || 26274 || 32847 || 29632 || 32% ||
 
 == Configuration ==
 
