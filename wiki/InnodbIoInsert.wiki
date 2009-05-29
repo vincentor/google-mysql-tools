@@ -19,10 +19,12 @@ Binaries tested:
 
 Notes:
   * v4-5037 was better at enforcing innodb_max_dirty_pages_pct, but this may be explained by the notes above.
+  * for mysql-5075, the percentage of dirty pages varied between 20% and 50%
 
 || *Binary* || *Inserts per second* || *Time* || *Avg pct dirty* ||
 || v4-5037 || 1022 || 48928 || 24% ||
 || xtradb-5134 || 982 || 50905 || 29% ||
+|| mysql-5075 || 306 || 163591 || 29% ||
 
 == Results for innodb_max_dirty_pages_pct=80 ==
 
@@ -31,7 +33,7 @@ Notes:
 || *Binary* || *Inserts per second* || *Time* || *Avg pct dirty* ||
 || v4-5037 || 1615 || 30959 || 53% ||
 || xtradb-5134 || 786 || 63598 || 31% ||
-|| mysql-5075 || 305 || 164049 || ?? ||
+|| mysql-5075 || 305 || 164049 || 33% ||
 
 == Analysis ==
 
@@ -47,6 +49,7 @@ This provides more performance data:
 || v4-5037 || 20% || 526 || 452 || 43 || 9.2% || 48.0% || 43.0% ||
 || xtradb-5134 || 80% || 684 || 190 || 50 || 7.9% || 43.3% || 48.3% ||
 || v4-5037 || 80% || 597 || 328 || 43 || 10.3% || 43.8% || 46.0% ||
+|| mysql-5075 || 80% || 536 || 120 || 46 || 5.6% || 53% || 42% ||
 
 == Configuration ==
 
