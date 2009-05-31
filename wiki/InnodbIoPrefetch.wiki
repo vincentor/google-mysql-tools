@@ -1,0 +1,31 @@
+#summary Performance with InnoDB read prefetch disabled
+
+= Introduction =
+
+The tests from InnodbIoOltpMemory, InnodbIoOltpDisk and InnodbIoInsert were repeated with InnoDB read prefetch enabled and disabled. This is done to determine whether the prefetching done by InnoDB improves performance.
+
+The test configuration is:
+  * 8-core server, 10 disks, SW RAID 0, 1MB stripe, ext2, 16G RAM
+
+Binaries tested:
+  * v4-5037 -- v4 Google patch for MySQL 5.0.37 with options to enable/disable prefetch
+    * --innodb_readahead_random - enable/disable prefetch during random access
+    * --innodb_readahead_sequential -- enable/diable prefetch during sequential access
+
+= Results for the insert benchmark =
+
+Results are only provided for MySQL 5.0.37 with the v4 Google patch.
+
+The results list:
+  * value for innodb_max_dirty_pages_pct
+  * average rows inserted per second for the duration of the test
+  * number of seconds to run the test
+  * time with prefetch off / time with prefetch on
+
+|| *innodb_max_dirty_pages_pct* || *prefetch* || *Inserts per second* || *Time* || *ratio* ||
+|| 20% || on || 1030 || 48537 ||
+|| 20% || off || 992 || 50409 || 1.04 ||
+|| ||
+|| ||
+|| 80% || on || 1612 || 31022 ||
+|| 80% || off || 1666 || 30004 || 0.97 ||
