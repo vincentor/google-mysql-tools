@@ -34,3 +34,4 @@ One day, Heikki will write the _Complete Guide to InnoDB_, until then you need t
   * [InnodbIoOltpMemory in-memory OLTP]
   * [InnodbIoOltpDisk disk-bound OLTP]
   * [InnodbIoInsert insert benchmark]
+  * [InnodbIoPrefetch results with InnoDB read prefetch enabled and disabled]
