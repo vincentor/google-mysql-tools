@@ -4,10 +4,10 @@
 
 The tests from InnodbIoOltpMemory, InnodbIoOltpDisk and InnodbIoInsert were repeated with InnoDB read prefetch enabled and disabled. This is done to determine whether the prefetching done by InnoDB improves performance.
 
-Performance with prefetch disabled relative to prefetch enabled:
+This lists the performance with prefetch disabled relative to it with prefetch enabled. A value greater than 1.0 means that performance is faster with it disabled. For these benchmarks, disabling prefetch improved performance for all but one configuration:
   * 0.96, 1.03 for the insert benchmark
   * 1.10, 1.11 for the OLTP in-memory benchmark
-  * 
+  * 1.12, 1.20 for the OLTP disk-bound benchmark
 
 The test configuration is:
   * 8-core server, 10 disks, SW RAID 0, 1MB stripe, ext2, 16G RAM
