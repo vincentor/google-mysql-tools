@@ -19,10 +19,11 @@ Binaries tested:
 
 = Results for the insert benchmark =
 
-Results are only provided for MySQL 5.0.37 with the v4 Google patch.
+The test is described in InnodbIoInsert. Results are only provided for MySQL 5.0.37 with the v4 Google patch.
 
 The results list:
   * value for innodb_max_dirty_pages_pct
+  * whether Innodb prefetch is enabled or disabled
   * average rows inserted per second for the duration of the test
   * number of seconds to run the test
   * ratio of inserts per second (prefetch off / prefetch on)
@@ -30,41 +31,40 @@ The results list:
 || *innodb_max_dirty_pages_pct* || *prefetch* || *Inserts per second* || *Time* || *ratio* ||
 || 20% || on || 1030 || 48537 ||
 || 20% || off || 992 || 50409 || 0.96 ||
-|| ||
-|| ||
+|| - || - || - || - ||
 || 80% || on || 1612 || 31022 ||
 || 80% || off || 1666 || 30004 || 1.03 ||
 
 = Result for the OLTP in-memory benchmark =
 
-Results are only provided for MySQL 5.0.37 with the v4 Google patch.
+The test is described in InnodbIoOltpMemory. Results are only provided for MySQL 5.0.37 with the v4 Google patch.
 
 The results list:
   * value for innodb_max_dirty_pages_pct
+  * whether InnoDB read prefetch is enabled or disabled
   * TpmC for the test
   * ratio of TpmC (prefetch off / prefetch on)
 
 || *innodb_max_dirty_pages_pct* || *prefetch* || *TpmC* || *ratio ||
 || 20% || on || 33209 ||
 || 20% || off || 36512 || 1.10 ||
-|| ||
-|| ||
+|| - || - || - || - ||
 || 80% || on || 34043 ||
 || 80% || off || 37661 || 1.11 ||
 
 = Result for the OLTP disk-bound benchmark =
 
-Results are only provided for MySQL 5.0.37 with the v4 Google patch.
+The test is described in InnodbIoOltpDisk. Results are only provided for MySQL 5.0.37 with the v4 Google patch.
 
 The results list:
   * value for innodb_max_dirty_pages_pct
+  * whether InnoDB read prefetch is enabled or disabled
   * TpmC for the test
   * ratio of TpmC (prefetch off / prefetch on)
 
 || *innodb_max_dirty_pages_pct* || *prefetch* || *TpmC* || *ratio ||
 || 20% || on || 3312 ||
 || 20% || off || 3718 || 1.12 ||
-|| ||
-|| ||
+|| - || - || - || - ||
 || 80% || on || 3876 ||
 || 80% || off || 4662 || 1.20 ||
