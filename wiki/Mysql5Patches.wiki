@@ -19,6 +19,7 @@ These have the same functionality as the MySQL 4 patches. There are several patc
   * [http://code.google.com/p/google-mysql-tools/source/browse/trunk/mysql-patches/innodb_disallow_writes-5.0.37.patch disable/enable writes to InnoDB files] via _set global innodb_disallow_writes=(0|1)_
   * [http://code.google.com/p/google-mysql-tools/source/browse/trunk/mysql-patches/rwlock_mutex_5.0.patch Patch] to use pthread_mutex_t instead of mutex_t for rw_lock_struct::mutex in InnoDB.
   * the [http://google-mysql-tools.googlecode.com/svn-history/r162/trunk/mysql-patches/global_trx_ids-5.0.68.patch.gz global transaction IDs and binlog event checksums stand-alone patch] extracted out of the big V3 patch and ported to mysql-5.0.68 as of May 12, 2009.
+  * Notes on implementing synchronous replication -- MysqlSyncReplication
 
 SmpPerformance has results for a variety of MySQL versions on 4, 8 and 16 core servers. 
 
