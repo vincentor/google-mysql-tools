@@ -54,8 +54,8 @@ The new values include:
    * Innodb_os_pages_written - from SHOW INNODB STATUS
    * Innodb_os_read_time - from SHOW INNODB STATUS
    * Innodb_os_write_time - from SHOW INNODB STATUS
-   * Innodb_time_per_read - milliseconds per read
-   * Innodb_time_per_write - milliseconds per write
+   * Innodb_time_per_read - average microseconds per read
+   * Innodb_time_per_write - average microseconds per write
    * Innodb_deadlocks - application deadlocks, detected automatically
    * Innodb_transaction_count - from SHOW INNODB STATUS
    * Innodb_transaction_purge_count - from SHOW INNODB STATUS
