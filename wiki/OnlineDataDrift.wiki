@@ -4,7 +4,7 @@
 
 This describes a tool for generating checksums on tables in a MySQL database. It can be used to check for data drift between copies of tables on a master and slave. The tool is intended to be easy to use and efficient. The tool is easy to use because it can run concurrent with the normal workload on a master or slave, it does not require an idle server, and servers do not have to be drained or restored when it runs. The tool is efficient because it computes the checksum incrementally over a period of time. The rate at which the check is made is configurable.
 
-In order to be efficient and easy to use, this tool does not compute the checksum for all tables or all rows in one table at the same point in time. The tool computes a checksum for each chunk of rows in a table. It is likely that this will skip a few rows from some tables. This is a trade-off. By using short-running statements, the statements can be run on a primary and get replayed on the
+In order to be efficient and easy to use, this tool does not compute the checksum for all tables or all rows in one table at the same point in time. The tool computes a checksum for each chunk of rows in a table. It is likely that this will skip a few rows from some tables. This is a trade-off. By using short-running statements, the statements can be run on a primary and get replayed on the slaves.
 
 This is similar to [http://maatkit.sourceforge.net/doc/mk-table-checksum.html mk-table-checksum] but uses features added to the Google MySQL patch. The big difference is that this uses the [NewSqlFunctions last_value] aggregate function to avoid estimating row ranges.
 
@@ -40,7 +40,7 @@ select @next_p1 := p1, @next_p2 := p2 from Foo order by p1, p2 limit 1
 
 SQL to scan one chunk of rows assuming rows_per_chunk is 1000. This requires a new SQL aggregate function, *last_value*, that returns the last value of the input expression per group. The end of the table has been reached when the returned count is less than rows_per_chunk. The next scan starts at the primary key value at which this scan stops. Including this row in the checksum for two chunks is not a problem.
 {{{
--- be paranoid, don't trust evaluation for mutating user variables
+-- be paranoid, do not trust evaluation for mutating user variables
 set @start_p1 := @next_p1
 set @start_p2 := @next_p2
 select @next_p1 := last_value(p1), @next_p2 := last_value(p2), count(*)
