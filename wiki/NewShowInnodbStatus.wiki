@@ -1,5 +1,3 @@
-#summary One-sentence summary of this page.
-
 = Introduction =
 
 We have added more output to *SHOW INNODB STATUS*, reordered the output so that the list of transactions is printed list and increased the maximum size of the output that may be returned.
