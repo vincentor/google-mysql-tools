@@ -1,5 +1,3 @@
-#summary One-sentence summary of this page.
-
 These InnoDB my.cnf variables are new in the Google patches:
   * innodb_max_merged_io - maximum number of IO requests merged to issue large IO from background IO threads.
   * innodb_read_io_threads - number of background read I/O threads in InnoDB.
