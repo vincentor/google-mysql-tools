@@ -84,7 +84,7 @@ from
 
 == Tool options ==
 
-Configuration options for the tool
+Configuration options for the tool:
   * --databases_to_check - the databases for which checksums are computed. It might be easier to list the databases to skip.
   * --tables_to_skip - the tables for which checksums are not computed. The table used for results, --result_table, is always skipped.
   * --engines_to_check - tables are skipped unless they use one of these storage engines 
