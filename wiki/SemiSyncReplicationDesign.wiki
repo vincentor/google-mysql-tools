@@ -1,4 +1,6 @@
-Semi-synchronous replication for MySQL -- implemented by Wei Li,  design doc courtesy of Wei Li
+#summary Semi-synchronous replication
+
+Design doc and implementation: Wei Li
 
 = Introduction =
 
@@ -156,7 +158,5 @@ If there is only one semi-synchronous target, meaning just one thread is sending
 Replication threads can do group commit to minimize network overhead. When the thread finds the current sending event is a end of transaction event, it would request for a reply from the slave database immediately. Instead, it look for the tail of the binlog file to check whether there are more transaction. Or, it can wait for a while to make the check. If there are more transactions in the file, the replication thread can send all waiting transactions and only waits for one reply. This looks like that we are doing group commit on the network.
 
 The benefit is that we can reduce network round trip by batching transaction replies. However, it also reduces the reliability of semi-synchronous replication. If we acknowledge each transaction, we can only lose at most one transaction during failure. If we do group commit, we might lose all transactions in the batch. We need to trade off between performance and reliability. 
-
-
 
 
