@@ -1,5 +1,3 @@
-#summary One-sentence summary of this page.
-
 = Introduction =
 
 The my.cnf option rpl_event_checksums enables the use of binlog event checksums. Note that both slaves and masters must used this patch when this is enabled. It is disabled by default.
