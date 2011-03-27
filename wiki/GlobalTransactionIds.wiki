@@ -1,6 +1,8 @@
+#summary Hierarchical Replication & Global Group IDs
+
 = MySQL Hierarchical Replication & Global Group IDs =
 
-Author: JustinTolmer
+Author: Justin Tolmer
 
 == Objective ==
 
