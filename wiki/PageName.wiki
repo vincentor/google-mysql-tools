@@ -2,7 +2,7 @@
 
 = Global Transaction IDs =
 
-GlobalTransactionIds were originally developed against MySQL 5.0. Work has begun to port the functionality to MySQL 5.1. This patch should be considered to be of in-development status, it has not run in any production environment yet. Some additional notes
+GlobalTransactionIds were originally developed against MySQL 5.0. Work has begun to port the functionality to MySQL 5.1. This patch should be considered to be of in-development status; it has not run in any production environment yet. Some additional notes
   * The feature requires --binlog-format=STATEMENT
   * The feature disallows
     * Use of --binlog-do-db
